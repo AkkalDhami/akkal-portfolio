@@ -22,7 +22,7 @@ export function CornerMarkers({
   const isSizeString = typeof size === "string" && size.includes("-");
 
   const baseStyles = cn(
-    "absolute text-muted-foreground transition-all duration-300 ease-out",
+    "absolute hidden text-muted-foreground transition-all duration-300 ease-out",
     "group-hover:text-accent-foreground pointer-events-none",
     isSizeString ? size : "",
     className
