@@ -33,7 +33,7 @@ export function ProjectCard({
 }) {
   if (!details) {
     return (
-      <motion.div className="group relative border border-neutral-500/40 p-4 transition-all">
+      <motion.div className="group screen-line-before relative p-4 transition-all">
         <div className="flex flex-col gap-6 md:flex-row">
           <Link
             href={`/projects/${project.slug}`}

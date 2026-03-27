@@ -29,7 +29,9 @@ const fadeUp = {
 
 export function HeroSection() {
   return (
-    <section id="about" className="relative pt-16 pb-6 font-sans font-normal">
+    <section
+      id="about"
+      className="screen-line-after relative px-4 py-5 pt-16 pb-6 font-sans font-normal">
       <div className="mt-4 sm:mt-4">
         <div className="mb-5 flex items-baseline-last gap-2">
           <BlurText

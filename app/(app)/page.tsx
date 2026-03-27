@@ -9,7 +9,7 @@ import { StackMarquee } from "@/components/shared/stack-marquee";
 
 export default async function Page() {
   return (
-    <div className="border-edge mx-auto max-w-4xl border-x px-4">
+    <div className="border-edge mx-auto flex max-w-4xl flex-col space-y-2 border-x">
       <HeroSection />
       <ProjectsSection home />
 

@@ -37,13 +37,13 @@ export function ProjectsSection({
   home?: boolean;
 }) {
   return (
-    <Section id="projects" className={cn(home && "screen-line-before")}>
+    <Section id="projects" className={cn("px-0", home && "screen-line-before")}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8">
+        className="mb-8 px-4">
         <Heading> Featured Projects</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           A collection of projects that showcase my skills in modern web
@@ -56,23 +56,12 @@ export function ProjectsSection({
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid grid-cols-1 gap-8">
+        className="screen-line-after grid grid-cols-1">
         {(home ? PROJECTS.slice(0, 7) : PROJECTS).map(project => (
           <motion.div key={project.slug} variants={fadeInUp} className="group">
             <ProjectCard project={project} details={details} />
           </motion.div>
         ))}
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="mt-8">
-        <PrimaryButton className="w-full cursor-default text-xs sm:text-sm">
-          More Projects under Development
-        </PrimaryButton>
       </motion.div>
     </Section>
   );

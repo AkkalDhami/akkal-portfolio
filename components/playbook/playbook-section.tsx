@@ -26,13 +26,13 @@ const stagger = {
 
 export function PlaybookSection({ home = false }: { home?: boolean }) {
   return (
-    <Section id="projects" className={cn(home && "screen-line-before")}>
+    <Section id="playbook" className={cn("px-0", home && "screen-line-before")}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8">
+        className="mb-8 px-4">
         <Heading>Backend Playbook</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           Notes from building production backend systems with Node.js and
@@ -45,7 +45,7 @@ export function PlaybookSection({ home = false }: { home?: boolean }) {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="screen-line-after &>*]:border divide-edge grid divide-x sm:grid-cols-2">
+        className="screen-line-after grid divide-x sm:grid-cols-2">
         {(home ? PLAYBOOK_DATA.slice(0, 4) : PLAYBOOK_DATA).map(
           (playbook: IPlaybook, i: number) => (
             <PlaybookCard data={playbook} i={i} key={playbook.slug} />
