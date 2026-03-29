@@ -30,7 +30,7 @@ export function HeroSection() {
   return (
     <section
       id="about"
-      className="screen-line-after bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)] relative px-4 py-5 pt-16 pb-6 font-sans font-normal">
+      className="screen-line-after relative z-10 px-4 py-5 pt-16 pb-6 font-sans font-normal">
       <div className="mt-4 sm:mt-4">
         <div className="mb-5 flex items-baseline-last gap-2">
           <BlurText
@@ -110,5 +110,38 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+export function HeroSectionBackground() {
+  return (
+    <div className="absolute inset-0 z-0">
+      <div
+        aria-hidden
+        className="absolute inset-0 isolate hidden contain-strict lg:block">
+        <motion.div
+          initial={{ opacity: 0, y: 80, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 1.8,
+            ease: "easeOut"
+          }}
+          viewport={{ once: true }}
+          className="absolute top-0 left-0 z-40 h-380 w-140 -translate-y-87.5 -rotate-45 rounded-full dark:bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 80, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 1.8,
+            ease: "easeOut",
+            delay: 0.4
+          }}
+          viewport={{ once: true }}
+          className="absolute top-0 right-0 z-40 h-380 w-140 -translate-y-87.5 rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)] dark:bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]"
+        />
+      </div>
+    </div>
   );
 }

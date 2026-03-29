@@ -10,7 +10,6 @@ import { LuArrowUpRight } from "react-icons/lu";
 import { SiDailydotdev } from "react-icons/si";
 import { PrimaryButton } from "@/components/ui/primary-button";
 import { Route } from "next";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import {
   Tooltip,
   TooltipContent,
@@ -72,7 +71,6 @@ export function SocialLinks({
                     target="_blank"
                     className="group from-background to-muted primary-ring relative bg-linear-to-b px-1.5 py-1.5">
                     <link.icon className="text-muted-primary group-hover:text-primary size-6" />
-                    <CornerMarkers offset={7.5} hoverOffset={4} />
                   </PrimaryButton>
                 }></TooltipTrigger>
               <TooltipContent>
@@ -99,7 +97,6 @@ export function SocialLinks({
             target="_blank"
             rel="noopener noreferrer"
             className="hover:bg-card-hover primary-ring group primary-border rounded-primary relative flex w-full items-center gap-3 border-[1.5px] p-1.5 text-center">
-            <CornerMarkers offset={7.5} hoverOffset={6} />
             <div className="rounded-primary from-background to-muted primary-ring relative bg-linear-to-b p-1.5">
               <social.icon className="text-muted-foreground group-hover:text-primary size-5 sm:size-6" />
               <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>

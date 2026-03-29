@@ -243,7 +243,7 @@ export function SearchCommand() {
                             key={item.value}
                             onClick={() => handleItemClick(item)}
                             value={item.value}
-                            className={"ml-2 flex items-center gap-2 py-2"}>
+                            className={"ml-2 flex items-center gap-2 py-1.5"}>
                             {image ? (
                               <Image
                                 src={item.icon as string}
@@ -257,7 +257,7 @@ export function SearchCommand() {
                                 )}
                               />
                             ) : (
-                              <item.icon className="primary-ring size-6 rounded-md p-1" />
+                              <item.icon className="primary-ring border-edge size-6 rounded-md border p-1" />
                             )}
 
                             <span className="flex-1">{item.label}</span>
