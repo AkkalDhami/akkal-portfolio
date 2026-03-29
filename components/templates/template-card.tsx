@@ -1,8 +1,6 @@
 "use client";
 import { LinkIcon } from "lucide-react";
-import { TechBadge } from "@/components/projects/tech-badge";
 import type { Route } from "next";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 
 import { motion } from "motion/react";
 
@@ -47,18 +45,26 @@ export function TemplateCard({ template }: { template: ITemplate }) {
               {template.description}
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {template.technologies.map((tech, idx) => {
                 const Icon =
                   TECH_ICONS[tech.name.toUpperCase() as TechStack] ||
                   TECH_ICONS["DEFAULT"];
                 return (
-                  <TechBadge key={idx} className="py-0.5 text-sm">
-                    <div className="flex items-center gap-1.5">
-                      <Icon className="size-3.5" />
-                      {tech.name}
-                    </div>
-                  </TechBadge>
+                  <TooltipProvider key={idx}>
+                    <Tooltip>
+                      <TooltipTrigger
+                        render={
+                          <div className="group from-background to-muted primary-ring rounded-primary relative bg-linear-to-b px-2 py-2">
+                            <Icon className="text-accent-foreground size-6 cursor-pointer rounded" />
+                            <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
+                          </div>
+                        }></TooltipTrigger>
+                      <TooltipContent>
+                        <p className="text-base">{tech.name}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 );
               })}
             </div>
@@ -69,7 +75,6 @@ export function TemplateCard({ template }: { template: ITemplate }) {
           </div>
         </div>
       </div>
-      <CornerMarkers offset={7.3} hoverOffset={8} className="text-primary" />
     </motion.div>
   );
 }
@@ -92,11 +97,6 @@ export function Links({ template }: { template: ITemplate }) {
                   target="_blank"
                   className={linkClassName}>
                   <LinkIcon className="size-4" />
-                  <CornerMarkers
-                    offset={7.5}
-                    hoverOffset={0}
-                    className="group-hover:text-muted-foreground"
-                  />
                 </Link>
               }
             />
@@ -117,11 +117,6 @@ export function Links({ template }: { template: ITemplate }) {
                   target="_blank"
                   className={linkClassName}>
                   <SiGithub className="size-4" />
-                  <CornerMarkers
-                    offset={7.3}
-                    hoverOffset={0}
-                    className="group-hover:text-muted-foreground"
-                  />
                 </Link>
               }
             />

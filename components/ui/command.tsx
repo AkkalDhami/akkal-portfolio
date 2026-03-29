@@ -111,7 +111,7 @@ function CommandInput({
       <AutocompleteInput
         autoFocus
         className={cn(
-          "border-transparent! bg-transparent! shadow-none before:hidden has-focus-visible:ring-0",
+          "border-edge border bg-transparent! shadow-none before:hidden",
           className
         )}
         placeholder={placeholder}

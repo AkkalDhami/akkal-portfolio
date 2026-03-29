@@ -46,7 +46,7 @@ export const STACKS: IStack[] = [
     category: "frontend"
   },
   {
-    label: "React Query",
+    label: "TanStack Query",
     value: "reactquery",
     icon: TECH_ICONS.REACTQUERY,
     category: "frontend"
