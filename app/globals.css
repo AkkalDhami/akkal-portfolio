@@ -52,7 +52,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --radius-primary: 0px;
+  --radius-primary: var(--radius);
 
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);
@@ -257,6 +257,10 @@ html {
 
 @utility screen-line-before {
   @apply before:bg-edge relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw];
+}
+
+@utility primary-ring {
+  @apply ring-offset-background ring-[1px] ring-neutral-200 ring-offset-1 dark:ring-neutral-800;
 }
 
 @utility screen-line-after {

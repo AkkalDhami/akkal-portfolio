@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="border-edge mx-auto max-w-4xl border-x px-4 pt-16 pb-2">
+    <div className="border-edge mx-auto max-w-4xl border-x pt-16">
       <TemplateSection />
     </div>
   );
