@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ICategory } from "@/utils/stack";
-import { SkillCard } from "./skill-card";
+import { SkillCardTooltip } from "./skill-card";
 import { CornerMarkers } from "@/components/ui/corner-markers";
 import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
@@ -22,9 +22,14 @@ export function SkillCategoryCard({ description, title, stacks }: ICategory) {
           <SubHeading className="text-muted-foreground mx-0 mb-4 text-base">
             {description}
           </SubHeading>
-          <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+          {/* <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
             {stacks.map((stack, index) => (
               <SkillCard key={stack.value} skill={stack} index={index} />
+            ))}
+          </div> */}
+          <div className="flex items-center gap-4">
+            {stacks.map(stack => (
+              <SkillCardTooltip key={stack.value} skill={stack} />
             ))}
           </div>
         </div>
