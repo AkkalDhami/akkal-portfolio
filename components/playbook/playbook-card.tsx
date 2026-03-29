@@ -1,5 +1,4 @@
 import { IPlaybook } from "@/types/app.types";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +19,6 @@ export function PlaybookCard({ data, i }: { data: IPlaybook; i: number }) {
       {data.description && (
         <p className="text-muted-foreground line-clamp-3">{data.description}</p>
       )}
-      <CornerMarkers offset={7.5} hoverOffset={6} key={data.slug} />
     </motion.a>
   );
 }

@@ -7,9 +7,8 @@ import { PLAYBOOK_DATA } from "@/data/playbook";
 import { PlaybookCard } from "./playbook-card";
 import { IPlaybook } from "@/types/app.types";
 import { cn } from "@/lib/utils";
-import { PrimaryButton } from "../ui/primary-button";
-import { CornerMarkers } from "../ui/corner-markers";
-import { Section } from "../ui/section";
+import { PrimaryButton } from "@/components/ui/primary-button";
+import { Section } from "@/components/ui/section";
 
 export const fadeInUp = {
   initial: { y: 40, opacity: 0 },
@@ -73,7 +72,6 @@ export function PlaybookSection({ home = false }: { home?: boolean }) {
             href={"/playbook"}
             className="py-3">
             View More
-            <CornerMarkers />
           </PrimaryButton>
         </motion.div>
       )}
