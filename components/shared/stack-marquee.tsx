@@ -2,11 +2,13 @@ import { Marquee, MarqueeContent, MarqueeItem } from "@/components/ui/marquee";
 import { cn } from "@/lib/utils";
 import { STACKS } from "@/utils/stack";
 import Image from "next/image";
-import { Section } from "../ui/section";
+import { Section } from "@/components/ui/section";
 
 export function StackMarquee({ home = false }: { home?: boolean }) {
   return (
-    <Section id="stack-marquee" className={cn(home && "screen-line-before")}>
+    <Section
+      id="stack-marquee"
+      className={cn("px-4", home && "screen-line-before pb-2")}>
       <Marquee className="space-y-5">
         <MarqueeContent speed={70} direction="right" gradient={false}>
           {STACKS.map(s => (

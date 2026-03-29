@@ -37,13 +37,19 @@ export function ProjectsSection({
   home?: boolean;
 }) {
   return (
-    <Section id="projects" className={cn("px-0", home && "screen-line-before")}>
+    <Section
+      id="projects"
+      className={cn(
+        home
+          ? "screen-line-before"
+          : "bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
+      )}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8 px-4">
+        className="mb-4 px-4">
         <Heading> Featured Projects</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           A collection of projects that showcase my skills in modern web

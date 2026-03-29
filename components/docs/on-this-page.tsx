@@ -81,7 +81,7 @@ export function OnThisPage() {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="group bg-muted relative my-6 w-full p-2">
+    <nav className="group bg-muted rounded-primary relative my-6 w-full p-2">
       <div
         onClick={() => setOpen(o => !o)}
         className="text-muted-primary hover:text-primary my-2 flex cursor-pointer items-center justify-between duration-300">

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUp } from "lucide-react";
 import { Button } from "./button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -41,13 +40,9 @@ export function BackToTop() {
             variant="secondary"
             size="icon"
             onClick={scrollToTop}
-            className="border-border/50 hover:bg-muted bg-muted rounded-none border backdrop-blur-md transition-all"
+            className="border-border/50 primary-ring hover:bg-muted bg-muted rounded-primary border backdrop-blur-md transition-all"
             aria-label="Back to top">
             <ArrowUp className="size-5" />
-            <CornerMarkers
-              hoverOffset={4}
-              className="group-hover:text-primary"
-            />
           </Button>
         </motion.div>
       )}

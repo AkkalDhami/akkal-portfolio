@@ -6,7 +6,6 @@ import { FlipWords } from "@/components/ui/flip-words";
 
 import { SocialLinks } from "./social-link";
 import { PrimaryButton } from "@/components/ui/primary-button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { TechBadge } from "@/components/projects/tech-badge";
 import { HOME_PAGE_STACKS } from "@/utils/stack";
 import { NAME } from "@/lib/constants";
@@ -31,7 +30,7 @@ export function HeroSection() {
   return (
     <section
       id="about"
-      className="screen-line-after relative px-4 py-5 pt-16 pb-6 font-sans font-normal">
+      className="screen-line-after bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)] relative px-4 py-5 pt-16 pb-6 font-sans font-normal">
       <div className="mt-4 sm:mt-4">
         <div className="mb-5 flex items-baseline-last gap-2">
           <BlurText
@@ -76,7 +75,7 @@ export function HeroSection() {
               {HOME_PAGE_STACKS.map(tech => (
                 <TechBadge
                   key={tech.value}
-                  className="rounded-primary border-neutral-400 py-1 dark:border-neutral-700">
+                  className="rounded-primary border-edge px-2.5 py-1.5">
                   <div className="flex items-center gap-2">
                     <tech.icon className="size-4" />
                     {tech.label}
@@ -92,13 +91,8 @@ export function HeroSection() {
             <PrimaryButton
               as="a"
               href="/projects"
-              className="rounded-primary w-full py-3.5 sm:w-auto">
+              className="rounded-primary primary-ring w-full py-3.5 sm:w-auto">
               View My Work
-              <CornerMarkers
-                offset={7.5}
-                hoverOffset={6}
-                key={"primary-button"}
-              />
             </PrimaryButton>
             <PrimaryButton
               variant="outline"
@@ -106,9 +100,8 @@ export function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               href={"/resume.pdf" as Route}
-              className="rounded-primary w-full py-3.5 sm:w-auto">
+              className="rounded-primary from-background to-muted primary-ring w-full bg-linear-to-br py-3.5 sm:w-auto">
               View My Resume
-              <CornerMarkers offset={7.5} hoverOffset={6} />
             </PrimaryButton>
           </motion.div>
           <div className="mt-3">

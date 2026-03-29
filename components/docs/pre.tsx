@@ -31,14 +31,17 @@ export function Pre({
       <pre
         ref={ref}
         {...props}
-        className={cn("thin-scrollbar relative my-2", className)}
+        className={cn(
+          "thin-scrollbar rounded-primary relative my-2",
+          className
+        )}
         style={{
           backgroundColor: bg
         }}>
         <CopyButton
           text={code}
           docs={true}
-          className="group absolute right-5 bottom-3 z-10 cursor-pointer bg-transparent text-xs hover:bg-neutral-800 hover:text-white"
+          className="group absolute right-5 bottom-3 z-10 cursor-pointer bg-transparent py-[6.65px] text-xs hover:bg-neutral-800 hover:text-white"
         />
         {children}
       </pre>

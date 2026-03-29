@@ -23,6 +23,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip";
 import { TECH_ICONS, TechStack } from "@/utils/icon-map";
+import { cn } from "@/lib/utils";
 
 export function ProjectCard({
   project,
@@ -42,7 +43,7 @@ export function ProjectCard({
               src={project.thumbnail}
               alt={project.title}
               fill
-              className="w-full object-cover transition-transform duration-500"
+              className="rounded-primary w-full object-cover transition-transform duration-500"
             />
           </Link>
 
@@ -61,7 +62,9 @@ export function ProjectCard({
                     TECH_ICONS[tech.name.toUpperCase() as TechStack] ||
                     TECH_ICONS["DEFAULT"];
                   return (
-                    <TechBadge key={idx} className="py-0.5 text-sm">
+                    <TechBadge
+                      key={idx}
+                      className="rounded-primary py-0.5 text-sm">
                       <div className="flex items-center gap-1.5">
                         <Icon className="size-3" />
                         {tech.name}
@@ -234,9 +237,9 @@ export function ProjectLinks({
 }) {
   if (!details) {
     const baseClassName =
-      "px-3 border border-neutral-500/40 bg-transparent py-2 flex items-center justify-center";
+      "px-3 border border-neutral-500/40 rounded-primary bg-transparent py-2 flex items-center justify-center";
     const linkClassName =
-      "text-muted-foreground relative bg-muted p-2 transition-colors hover:text-foreground hover:bg-muted duration-300";
+      "text-muted-foreground relative primary-ring rounded-primary bg-muted px-2 py-2.5 transition-colors hover:text-foreground hover:bg-muted duration-300 from-background to-muted bg-linear-to-br";
     return (
       <div className="flex items-center gap-4">
         {project.liveUrl && (
@@ -248,13 +251,14 @@ export function ProjectLinks({
                   <Link
                     href={project.liveUrl as Route}
                     target="_blank"
-                    className={linkClassName}>
+                    className={cn("primary-ring", linkClassName)}>
                     <LinkIcon className="size-4" />
                     <CornerMarkers
                       offset={7.2}
                       hoverOffset={0}
                       className="text-muted-primary"
                     />
+                    {/* <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-muted ring-inset dark:ring-muted"></div> */}
                   </Link>
                 }
               />
@@ -275,11 +279,7 @@ export function ProjectLinks({
                     target="_blank"
                     className={linkClassName}>
                     <SiGithub className="size-4" />
-                    <CornerMarkers
-                      offset={7.3}
-                      hoverOffset={0}
-                      className="text-muted-primary"
-                    />
+                    <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary ring-muted pointer-events-none absolute inset-0 ring-1 ring-inset dark:ring-white/15"></div>
                   </Link>
                 }
               />

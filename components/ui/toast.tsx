@@ -75,7 +75,7 @@ function Toasts({ position = "bottom-right" }: { position: ToastPosition }) {
           return (
             <Toast.Root
               className={cn(
-                "bg-popover text-popover-foreground absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full border shadow-lg/5 select-none [transition:transform_.5s_cubic-bezier(.22,1,.36,1),opacity_.5s,height_.15s] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
+                "bg-popover text-popover-foreground rounded-primary before:rounded-primary absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full border shadow-lg/5 select-none [transition:transform_.5s_cubic-bezier(.22,1,.36,1),opacity_.5s,height_.15s] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
                 // Base positioning using data-position
                 "data-[position*=right]:right-0 data-[position*=right]:left-auto",
                 "data-[position*=left]:right-auto data-[position*=left]:left-0",
@@ -202,8 +202,8 @@ function AnchoredToasts() {
                 className={cn(
                   "bg-popover text-popover-foreground relative border text-xs text-balance transition-[scale,opacity] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/6%)] data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
                   tooltipStyle
-                    ? "shadow-md/5 before:rounded-[calc(var(--radius-md)-1px)]"
-                    : "shadow-lg/5 before:rounded-[calc(var(--radius-lg)-1px)]"
+                    ? "before:rounded-primary shadow-md/5"
+                    : "before:rounded-primary shadow-lg/5"
                 )}
                 data-slot="toast-popup"
                 toast={toast}>

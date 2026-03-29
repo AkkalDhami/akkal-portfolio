@@ -26,7 +26,14 @@ const stagger = {
 
 export function PlaybookSection({ home = false }: { home?: boolean }) {
   return (
-    <Section id="playbook" className={cn("px-0", home && "screen-line-before")}>
+    <Section
+      id="playbook"
+      className={cn(
+        "px-0",
+        home
+          ? "screen-line-before"
+          : "bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
+      )}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +52,7 @@ export function PlaybookSection({ home = false }: { home?: boolean }) {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="screen-line-after grid divide-x sm:grid-cols-2">
+        className="screen-line-after divide-edge grid divide-x sm:grid-cols-2">
         {(home ? PLAYBOOK_DATA.slice(0, 4) : PLAYBOOK_DATA).map(
           (playbook: IPlaybook, i: number) => (
             <PlaybookCard data={playbook} i={i} key={playbook.slug} />
@@ -59,7 +66,7 @@ export function PlaybookSection({ home = false }: { home?: boolean }) {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-6 mb-2 flex items-center justify-center">
+          className="mt-2 mb-2 flex items-center justify-center">
           <PrimaryButton
             as="a"
             variant="secondary"

@@ -6,23 +6,25 @@ import { motion } from "motion/react";
 
 export function SetupList() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-4 pt-4">
       {SETUP_DATA.map((category, categoryIndex) => (
-        <section key={category.title} className="space-y-4">
+        <section
+          key={category.title}
+          className="screen-line-after space-y-4 pb-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.05, delay: categoryIndex * 0.05 }}
             viewport={{ once: true }}
             className="flex items-center gap-3">
-            <div className="bg-muted text-primary flex size-10 items-center justify-center">
+            <div className="from-background to-muted border-edge rounded-primary primary-ring text-primary flex size-9 items-center justify-center border bg-linear-to-b">
               <category.icon className="size-5" />
             </div>
             <h2 className="text-muted-primary text-2xl font-medium tracking-tight">
               {category.title}
             </h2>
           </motion.div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {category.items.map((item, itemIndex) => (
               <SetupCard
                 key={item.title}

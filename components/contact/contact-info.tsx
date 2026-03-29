@@ -64,7 +64,7 @@ export function ContactInfo() {
             className="group relative">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <item.icon className="bg-muted/20 border-border text-muted-primary size-11 border p-2" />
+                <item.icon className="primary-ring rounded-primary text-muted-primary border-edge from-background to-muted size-9 border bg-linear-to-b p-1.5" />
               </div>
               <div className="text-primary flex flex-col space-y-1">
                 <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
@@ -82,7 +82,7 @@ export function ContactInfo() {
                       text={item.value}
                       docs={false}
                       className={cn(
-                        "hover:bg-muted text-muted-foreground opacity-0",
+                        "hover:bg-muted text-muted-foreground py-1.5 opacity-0",
                         "duration-200 ease-in-out group-hover:opacity-100"
                       )}
                     />

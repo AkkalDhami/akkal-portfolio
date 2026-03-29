@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon } from "lucide-react";
 import {
   RiBookOpenLine,
   RiHome4Line,
@@ -19,7 +18,6 @@ import {
   CommandDialogPopup,
   CommandDialogTrigger,
   CommandEmpty,
-  CommandFooter,
   CommandGroup,
   CommandGroupLabel,
   CommandInput,
@@ -30,7 +28,6 @@ import {
 } from "@/components/ui/command";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { PrimaryButton } from "@/components/ui/primary-button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { IconType } from "react-icons";
 import { useRouter } from "next/navigation";
 import { Route } from "next";
@@ -221,20 +218,14 @@ export function SearchCommand() {
         render={
           <PrimaryButton
             variant="outline"
-            className="relative px-2 py-2 transition-colors">
-            <CornerMarkers
-              offset={7.5}
-              hoverOffset={4}
-              key={"primary-button"}
-            />
+            className="primary-ring relative px-2 py-[7px] transition-colors">
             <KbdGroup>
               <Kbd>⌘</Kbd>
               <Kbd>K</Kbd>
             </KbdGroup>
           </PrimaryButton>
         }></CommandDialogTrigger>
-      <CommandDialogPopup className={"group relative"}>
-        <CornerMarkers offset={7.5} hoverOffset={8} key={"primary-button"} />
+      <CommandDialogPopup className={"group rounded-primary relative"}>
         <Command items={groupedItems}>
           <CommandInput placeholder="Search for apps and commands..." />
           <CommandPanel>
@@ -266,7 +257,7 @@ export function SearchCommand() {
                                 )}
                               />
                             ) : (
-                              <item.icon className="size-4" />
+                              <item.icon className="primary-ring size-6 rounded-md p-1" />
                             )}
 
                             <span className="flex-1">{item.label}</span>
@@ -280,31 +271,6 @@ export function SearchCommand() {
               )}
             </CommandList>
           </CommandPanel>
-          <CommandFooter>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <KbdGroup>
-                  <Kbd>
-                    <ArrowUpIcon />
-                  </Kbd>
-                  <Kbd>
-                    <ArrowDownIcon />
-                  </Kbd>
-                </KbdGroup>
-                <span>Navigate</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Kbd>
-                  <CornerDownLeftIcon />
-                </Kbd>
-                <span>Open</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Kbd>Esc</Kbd>
-              <span>Close</span>
-            </div>
-          </CommandFooter>
         </Command>
       </CommandDialogPopup>
     </CommandDialog>

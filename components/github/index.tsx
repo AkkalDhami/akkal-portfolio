@@ -17,7 +17,7 @@ export async function GitHubContributions({
   return (
     <Section
       id="github-contributions"
-      className={cn(home && "screen-line-before")}>
+      className={cn("px-4", home && "screen-line-before")}>
       <Suspense fallback={<GitHubContributionFallback />}>
         <GitHubContributionGraph initialData={contributions} />
       </Suspense>

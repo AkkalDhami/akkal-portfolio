@@ -21,7 +21,7 @@ import { ITemplate } from "./template-section";
 
 export function TemplateCard({ template }: { template: ITemplate }) {
   return (
-    <motion.div className="group relative border border-neutral-500/40 p-4 transition-all">
+    <motion.div className="group screen-line-after relative p-4 transition-all">
       <div className="flex flex-col gap-6 md:flex-row">
         <Image
           src={template.thumbnail}
@@ -35,7 +35,7 @@ export function TemplateCard({ template }: { template: ITemplate }) {
           alt={template.title}
           width={200}
           height={200}
-          className="w-full object-cover transition-transform duration-500 sm:hidden"
+          className="rounded-primary w-full object-cover transition-transform duration-500 sm:hidden"
         />
 
         <div className="flex flex-1 flex-col justify-between py-1">
@@ -55,7 +55,7 @@ export function TemplateCard({ template }: { template: ITemplate }) {
                 return (
                   <TechBadge key={idx} className="py-0.5 text-sm">
                     <div className="flex items-center gap-1.5">
-                      <Icon className="size-3" />
+                      <Icon className="size-3.5" />
                       {tech.name}
                     </div>
                   </TechBadge>
@@ -78,7 +78,7 @@ export function Links({ template }: { template: ITemplate }) {
   const baseClassName =
     "px-3 border border-neutral-500/40 bg-transparent py-2 flex items-center justify-center";
   const linkClassName =
-    "text-muted-foreground bg-muted relative p-2 transition-colors hover:text-foreground hover:bg-muted duration-300";
+    "text-muted-foreground bg-muted rounded-primary primary-ring relative px-2 py-2.5 transition-colors hover:text-foreground hover:bg-muted duration-300 from-background to-muted bg-linear-to-b";
   return (
     <div className="flex items-center gap-4">
       {template.liveUrl && (

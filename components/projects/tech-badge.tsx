@@ -15,17 +15,10 @@ export function TechBadge({
   return (
     <div
       className={cn(
-        `from-background to-card-hover text-accent-foreground relative mx-0.5 inline-flex items-center border border-neutral-400 bg-linear-to-r px-1.5 text-base dark:border-neutral-500`,
+        `from-background rounded-primary to-card-hover primary-ring text-accent-foreground relative mx-0.5 inline-flex items-center border border-neutral-300 bg-linear-to-r px-2 py-1 text-base dark:border-neutral-700`,
         className
       )}>
       {children}
-
-      <CornerMarkers
-        offset={7.5}
-        hoverOffset={0}
-        className="group-hover:text-muted-foreground"
-        key={"primary-button"}
-      />
     </div>
   );
 }

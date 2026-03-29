@@ -10,7 +10,7 @@ export function Profile() {
         alt="Profile"
         width={50}
         height={50}
-        className="size-10 rounded-none object-cover object-left p-0.5"
+        className="primary-ring rounded-primary size-10 object-cover object-left p-0.5"
       />
       <CornerMarkers offset={5} hoverOffset={4} />
     </Link>

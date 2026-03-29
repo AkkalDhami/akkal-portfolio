@@ -15,7 +15,7 @@ function SkillCard({ skill, index }: { skill: IStack; index: number }) {
       transition={{ delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group/item relative flex items-center gap-2 border border-neutral-300 p-2 transition-colors duration-200 dark:border-neutral-800",
+        "group/item rounded-primary primary-ring border-edge relative flex items-center gap-2 border p-2 transition-colors duration-200",
         index % 2 === 0 ? "bg-linear-l" : "bg-linear-b"
       )}>
       <div className="p-1.5">

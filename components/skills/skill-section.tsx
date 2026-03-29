@@ -52,7 +52,7 @@ export function SkillsSection({ home = false }: { home?: boolean }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8">
+        className="mb-4 px-4">
         <Heading>Skills & Technologies</Heading>
         <SubHeading className="mx-0 max-w-2xl">
           A collection of skills and technologies that I have acquired over the
@@ -65,7 +65,7 @@ export function SkillsSection({ home = false }: { home?: boolean }) {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid grid-cols-1 gap-6">
+        className="screen-line-before grid grid-cols-1">
         {skills.map((skill, index) => (
           <SkillCategoryCard key={index} {...skill} />
         ))}

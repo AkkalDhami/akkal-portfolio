@@ -17,11 +17,11 @@ export function Footer() {
         )}>
         <div
           className={cn(
-            "relative mx-auto w-full max-w-4xl px-4 py-4",
-            "screen-line-before screen-line-after",
+            "relative mx-auto w-full max-w-4xl px-4 py-2",
+            "screen-line-after",
             "border-edge border-x"
           )}>
-          <div className="mb-8 flex flex-wrap justify-between gap-8">
+          <div className="screen-line-before mb-8 flex flex-wrap justify-between gap-8 py-4">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <Profile />

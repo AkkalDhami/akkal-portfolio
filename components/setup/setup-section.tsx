@@ -8,13 +8,15 @@ import { Section } from "../ui/section";
 
 export function SetupSection() {
   return (
-    <Section id="setup" className="">
+    <Section
+      id="setup"
+      className="bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)] px-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8">
+        className="screen-line-after pb-4">
         <Heading>My Development Setup</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           My daily development environment, including editor configurations,

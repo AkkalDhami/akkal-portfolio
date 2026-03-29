@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import { CornerMarkers } from "@/components/ui/corner-markers";
+import { PrimaryButton } from "../ui/primary-button";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -16,12 +17,11 @@ export function ThemeToggle({ className }: { className?: string }) {
   };
 
   return (
-    <button
+    <PrimaryButton
       onClick={toggleTheme}
+      variant="outline"
       className={cn(
-        "group rounded-0 relative size-9 cursor-pointer border-[1.5px] px-2 py-1.5 transition-colors duration-300",
-        "from-background to-card-hover hover:bg-secondary/80 border border-neutral-200 bg-linear-to-r dark:border-neutral-800",
-        "flex items-center justify-center sm:hidden",
+        "primary-ring from-background to-muted bg-linear-to-tr px-2 py-1",
         className
       )}
       aria-label="Toggle theme">
@@ -36,8 +36,8 @@ export function ThemeToggle({ className }: { className?: string }) {
           {!isDark ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -74,6 +74,6 @@ export function ThemeToggle({ className }: { className?: string }) {
         </motion.div>
       </AnimatePresence>
       <CornerMarkers hoverOffset={3} className="group-hover:text-primary" />
-    </button>
+    </PrimaryButton>
   );
 }

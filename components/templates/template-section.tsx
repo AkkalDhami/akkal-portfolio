@@ -114,13 +114,20 @@ export const TEMPLATE_DATA: ITemplate[] = [
 
 export function TemplateSection({ home = false }: { home?: boolean }) {
   return (
-    <Section id="contact" className={cn(home && "screen-line-before")}>
+    <Section
+      id="contact"
+      className={cn(
+        "px-0",
+        home
+          ? "screen-line-before"
+          : "bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
+      )}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mb-8">
+        className="mb-4 px-4">
         <Heading>Templates</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           A curated collection of beautiful portfolio templates and modern
@@ -133,7 +140,7 @@ export function TemplateSection({ home = false }: { home?: boolean }) {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
-        className="grid grid-cols-1 gap-6">
+        className="divide-edge screen-line-before grid grid-cols-1 divide-x">
         {(home ? TEMPLATE_DATA.slice(0, 4) : TEMPLATE_DATA).map(t => (
           <motion.div key={t.githubUrl} variants={fadeInUp} className="group">
             <TemplateCard template={t} />
@@ -147,7 +154,7 @@ export function TemplateSection({ home = false }: { home?: boolean }) {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-6 flex items-center justify-center">
+          className="my-2 flex items-center justify-center">
           <PrimaryButton
             as="a"
             variant="secondary"

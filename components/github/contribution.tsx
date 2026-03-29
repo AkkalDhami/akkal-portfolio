@@ -83,10 +83,10 @@ export function GitHubContributionGraph({
           onValueChange={val => {
             if (val) setYear(val);
           }}>
-          <SelectTrigger className="h-6 w-30 text-xs">
+          <SelectTrigger className="rounded-primary h-6 w-30 text-xs">
             <SelectValue placeholder="Select Year" />
           </SelectTrigger>
-          <SelectContent className={"w-auto"}>
+          <SelectContent className={"rounded-primary w-auto"}>
             {YEARS.map(y => (
               <SelectItem key={y.value} value={y.value} className="text-xs">
                 {y.label}
@@ -96,7 +96,7 @@ export function GitHubContributionGraph({
         </Select>
       </div>
 
-      <div className="group relative min-h-50 border border-neutral-200 p-4 dark:border-neutral-800">
+      <div className="group relative min-h-50">
         {loading ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="border-primary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
@@ -117,7 +117,7 @@ export function GitHubContributionGraph({
                       />
                     </TooltipTrigger>
 
-                    <TooltipContent className="font-sans">
+                    <TooltipContent className="rounded-primary font-sans">
                       <p>
                         {activity.count} contribution
                         {activity.count > 1 ? "s" : null} on{" "}
