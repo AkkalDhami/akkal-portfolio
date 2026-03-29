@@ -28,7 +28,7 @@ export function TemplateCard({ template }: { template: ITemplate }) {
           alt={template.title}
           width={200}
           height={200}
-          className="hidden object-cover transition-transform duration-500 sm:block"
+          className="rounded-primary hidden object-cover transition-transform duration-500 sm:block"
         />
         <Image
           src={template.thumbnail}
