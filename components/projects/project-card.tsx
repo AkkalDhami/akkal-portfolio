@@ -7,7 +7,6 @@ import { TechBadge } from "@/components/projects/tech-badge";
 import { DetailSwapCard } from "@/components/projects/card";
 import type { Route } from "next";
 import { PrimaryButton } from "@/components/ui/primary-button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 
 import { motion } from "motion/react";
 
@@ -57,26 +56,27 @@ export function ProjectCard({
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {project.technologies.slice(0, 3).map((tech, idx) => {
+                {project.technologies.map((tech, idx) => {
                   const Icon =
                     TECH_ICONS[tech.name.toUpperCase() as TechStack] ||
                     TECH_ICONS["DEFAULT"];
                   return (
-                    <TechBadge
-                      key={idx}
-                      className="rounded-primary py-0.5 text-sm">
-                      <div className="flex items-center gap-1.5">
-                        <Icon className="size-3" />
-                        {tech.name}
-                      </div>
-                    </TechBadge>
+                    <TooltipProvider key={idx}>
+                      <Tooltip>
+                        <TooltipTrigger
+                          render={
+                            <div className="group from-background to-muted primary-ring rounded-primary relative bg-linear-to-b px-2 py-2">
+                              <Icon className="text-accent-foreground size-6 cursor-pointer rounded" />
+                              <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
+                            </div>
+                          }></TooltipTrigger>
+                        <TooltipContent>
+                          <p className="text-base">{tech.name}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                   );
                 })}
-                {project.technologies.length > 3 && (
-                  <span className="text-muted-foreground flex items-center text-sm">
-                    +{project.technologies.length - 3} more
-                  </span>
-                )}
               </div>
 
               <div className="mt-4 flex justify-end">
@@ -85,7 +85,6 @@ export function ProjectCard({
             </div>
           </div>
         </div>
-        <CornerMarkers offset={7.5} hoverOffset={8} className="text-primary" />
       </motion.div>
     );
   }
@@ -96,8 +95,8 @@ export function ProjectCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className="h-full">
-      <Card className="h-full gap-3 overflow-hidden border-transparent dark:bg-transparent">
-        <div className="relative mb-1 aspect-video">
+      <Card className="h-full gap-0 overflow-hidden border-transparent dark:bg-transparent">
+        <div className="relative aspect-video">
           <DetailSwapCard
             data={{
               images: project.images
@@ -110,7 +109,7 @@ export function ProjectCard({
           />
         </div>
 
-        <CardContent className="space-y-6 border-0 p-4">
+        <CardContent className="space-y-4 border-0 px-4">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -253,12 +252,6 @@ export function ProjectLinks({
                     target="_blank"
                     className={cn("primary-ring", linkClassName)}>
                     <LinkIcon className="size-4" />
-                    <CornerMarkers
-                      offset={7.2}
-                      hoverOffset={0}
-                      className="text-muted-primary"
-                    />
-                    {/* <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-muted ring-inset dark:ring-muted"></div> */}
                   </Link>
                 }
               />
@@ -298,11 +291,6 @@ export function ProjectLinks({
                   href={`/projects/${project.slug}`}
                   className={linkClassName}>
                   <ArrowUpRight className="size-4" />
-                  <CornerMarkers
-                    offset={7.5}
-                    hoverOffset={0}
-                    className="text-muted-primary"
-                  />
                 </Link>
               }
             />
@@ -327,9 +315,8 @@ export function ProjectLinks({
           as="a"
           href={project.liveUrl as Route}
           target="_blank"
-          className="group hover:shadow-primary relative py-2 font-normal">
+          className="group hover:shadow-primary relative py-2 font-medium">
           Live Demo
-          <CornerMarkers offset={8} hoverOffset={0} key={"primary-button"} />
         </PrimaryButton>
       )}
 
@@ -341,7 +328,6 @@ export function ProjectLinks({
           target="_blank"
           className="group hover:shadow-primary relative py-2 font-normal">
           Source Code
-          <CornerMarkers offset={8} hoverOffset={0} key={"primary-button"} />
         </PrimaryButton>
       )}
     </motion.div>
