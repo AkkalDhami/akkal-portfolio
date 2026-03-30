@@ -71,7 +71,7 @@ function SkillCardTooltip({ skill }: { skill: IStack }) {
             </div>
           }></TooltipTrigger>
         <TooltipContent>
-          <p className="text-lg">{skill.label}</p>
+          <p className="text-base">{skill.label}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

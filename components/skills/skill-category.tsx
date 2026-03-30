@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { ICategory } from "@/utils/stack";
 import { SkillCardTooltip } from "./skill-card";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
 
@@ -27,18 +26,12 @@ export function SkillCategoryCard({ description, title, stacks }: ICategory) {
               <SkillCard key={stack.value} skill={stack} index={index} />
             ))}
           </div> */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             {stacks.map(stack => (
               <SkillCardTooltip key={stack.value} skill={stack} />
             ))}
           </div>
         </div>
-        <CornerMarkers
-          offset={7.3}
-          hoverOffset={0}
-          key={title}
-          className="text-primary"
-        />
       </div>
     </motion.div>
   );
