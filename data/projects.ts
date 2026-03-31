@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
     description:
       "Servercn is a component registry for building Node.js backends by composition.",
     technologies: [
-      { name: "React" },
+      { name: "Nextjs" },
       { name: "Nodejs" },
       { name: "MongoDB" },
       { name: "Tailwind" }
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
       "/images/hero.png",
       "/images/hero.png"
     ],
-    liveUrl: "https://servercn.xyz",
+    liveUrl: "https://servercn.vercel.app",
     githubUrl: "https://github.com/akkaldhami/servercn",
     features: [
       "Component-First Backend",

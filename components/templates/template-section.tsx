@@ -30,7 +30,7 @@ export const TEMPLATE_DATA: ITemplate[] = [
       "A sleek developer portfolio with modern UI, subtle animations, and fully responsive layouts built for performance and clarity.",
     thumbnail: "/images/og.png",
     githubUrl: `${GITHUB_URL}/akkal-dhami`,
-    liveUrl: "https://akkal.vercel.app",
+    liveUrl: "https://akkal.com.np",
     technologies: [
       { name: "Nextjs" },
       { name: "React" },
@@ -115,7 +115,7 @@ export const TEMPLATE_DATA: ITemplate[] = [
 export function TemplateSection({ home = false }: { home?: boolean }) {
   return (
     <Section
-      id="contact"
+      id="templates"
       className={cn(
         "px-0",
         home
