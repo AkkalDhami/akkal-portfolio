@@ -28,7 +28,7 @@ export const TEMPLATE_DATA: ITemplate[] = [
     title: "Minimal Developer Portfolio",
     description:
       "A sleek developer portfolio with modern UI, subtle animations, and fully responsive layouts built for performance and clarity.",
-    thumbnail: "/images/og.png",
+    thumbnail: "/assets/templates/temp-1.png",
     githubUrl: `${GITHUB_URL}/akkal-dhami`,
     liveUrl: "https://akkal.com.np",
     technologies: [
