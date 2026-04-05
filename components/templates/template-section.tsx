@@ -90,8 +90,8 @@ export const TEMPLATE_DATA: ITemplate[] = [
     githubUrl: `${GITHUB_URL}/terminal-portfolio`,
     liveUrl: "https://terminal-portfolio-akkal.vercel.app",
     technologies: [
-      { name: "Html" },
-      { name: "Css" },
+      { name: "HTML" },
+      { name: "CSS" },
       { name: "JavaScript" },
       { name: "Tailwind" }
     ]
@@ -104,8 +104,8 @@ export const TEMPLATE_DATA: ITemplate[] = [
     githubUrl: `${GITHUB_URL}/Portfolio`,
     liveUrl: "https://akkal2.vercel.app",
     technologies: [
-      { name: "Html" },
-      { name: "Css" },
+      { name: "HTML" },
+      { name: "CSS" },
       { name: "JavaScript" },
       { name: "Tailwind" }
     ]

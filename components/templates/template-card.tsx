@@ -55,7 +55,7 @@ export function TemplateCard({ template }: { template: ITemplate }) {
                     <Tooltip>
                       <TooltipTrigger
                         render={
-                          <div className="group from-background to-muted primary-ring rounded-primary relative bg-linear-to-b px-2 py-2">
+                          <div className="group from-background to-muted primary-ring relative rounded-md bg-linear-to-b px-2 py-2">
                             <Icon className="text-accent-foreground size-6 cursor-pointer rounded" />
                             <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
                           </div>
