@@ -24,6 +24,7 @@ export const PROJECTS: Project[] = [
       { name: "Nextjs" },
       { name: "Nodejs" },
       { name: "MongoDB" },
+      { name: "TypeScript" },
       { name: "Tailwind" }
     ],
     thumbnail: "/images/hero.png",
@@ -53,6 +54,7 @@ export const PROJECTS: Project[] = [
       "EvanStore is a e-commerce platform for grocery shopping. It is a full-stack application built with React, Node.js, and MongoDB.",
     technologies: [
       { name: "React" },
+      { name: "JavaScript" },
       { name: "Nodejs" },
       { name: "MongoDB" },
       { name: "Tailwind" }
