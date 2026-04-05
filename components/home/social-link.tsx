@@ -22,6 +22,7 @@ import { IconType } from "react-icons";
 
 export type SocialLink = {
   name: string;
+  key?: string;
   href: string;
   icon: IconType;
 };
@@ -30,22 +31,26 @@ export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
     href: GITHUB_URL,
-    icon: RiGithubFill
+    icon: RiGithubFill,
+    key: "g"
   },
   {
     name: "LinkedIn",
     href: LINKEDIN_URL,
-    icon: RiLinkedinFill
+    icon: RiLinkedinFill,
+    key: "l"
   },
   {
     name: "X (Twitter)",
     href: X_URL,
-    icon: RiTwitterXFill
+    icon: RiTwitterXFill,
+    key: "x"
   },
   {
     name: "daily.dev",
     href: DAILY_DEV_URL,
-    icon: SiDailydotdev
+    icon: SiDailydotdev,
+    key: "z"
   }
 ];
 

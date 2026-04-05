@@ -48,6 +48,7 @@ export interface Item {
   icon: IconType | string;
   link?: boolean;
   newTab?: boolean;
+  key?: string;
 }
 
 export interface Group {
@@ -60,46 +61,52 @@ export const navigations: Item[] = [
     icon: RiHome4Line,
     label: "Home",
     value: "/",
-    link: true
+    link: true,
+    key: "h"
   },
   {
     icon: HiOutlineCube,
     label: "Projects",
     value: "/projects",
-    link: true
+    link: true,
+    key: "p"
   },
   {
     icon: HiOutlineSquare3Stack3D,
     label: "Tech Skills",
     value: "/#skills",
-    link: true
+    link: true,
+    key: "e"
   },
   {
     icon: LiaLaptopCodeSolid,
     label: "Development Setup",
     value: "/dev-setup",
-    link: true
+    link: true,
+    key: "s"
   },
   {
     icon: RiBookOpenLine,
     label: "PlayBook",
     value: "/playbook",
-    link: true
+    link: true,
+    key: "p"
   },
   {
     icon: LuLayoutTemplate,
     label: "Templates",
     value: "/templates",
-    link: true
+    link: true,
+    key: "t"
   },
   {
     icon: RiPhoneLine,
     label: "Contacts",
     value: "/contacts",
-    link: true
+    link: true,
+    key: "c"
   }
 ];
-
 export const projects: Item[] = PROJECTS.map(proj => {
   return {
     value: `/projects/${proj.slug}`,
@@ -147,7 +154,8 @@ export const socials: Item[] = socialLinks.map(s => {
     label: `${s.name}`,
     icon: s.icon,
     link: true,
-    newTab: true
+    newTab: true,
+    key: s.key
   };
 });
 
@@ -155,15 +163,17 @@ export const others: Item[] = [
   {
     icon: RiGithubFill,
     label: "Source Code",
-    value: `${GITHUB_URL}/akkal-dhami`,
+    value: `${GITHUB_URL}/akkal-portfolio`,
     link: true,
-    newTab: true
+    newTab: true,
+    key: "y"
   },
   {
     icon: LuMoonStar,
     label: "Toggle Theme",
     value: `Toggle Theme`,
-    link: false
+    link: false,
+    key: "d"
   }
 ];
 
@@ -243,24 +253,33 @@ export function SearchCommand() {
                             key={item.value}
                             onClick={() => handleItemClick(item)}
                             value={item.value}
-                            className={"ml-2 flex items-center gap-2 py-1.5"}>
-                            {image ? (
-                              <Image
-                                src={item.icon as string}
-                                alt={item.label}
-                                width={16}
-                                height={16}
-                                className={cn(
-                                  "text-muted-primary group-hover:text-accent-foreground size-6",
-                                  item.label.toLocaleLowerCase() === "email" &&
-                                    "dark:invert"
-                                )}
-                              />
-                            ) : (
-                              <item.icon className="primary-ring border-edge size-6 rounded-md border p-1" />
-                            )}
+                            className={
+                              "ml-2 flex items-center justify-between py-1.5"
+                            }>
+                            <div className="flex items-center gap-2">
+                              {image ? (
+                                <Image
+                                  src={item.icon as string}
+                                  alt={item.label}
+                                  width={16}
+                                  height={16}
+                                  className={cn(
+                                    "text-muted-primary group-hover:text-accent-foreground size-6",
+                                    item.label.toLocaleLowerCase() ===
+                                      "email" && "dark:invert"
+                                  )}
+                                />
+                              ) : (
+                                <item.icon className="primary-ring border-edge size-6 rounded-md border p-1" />
+                              )}
 
-                            <span className="flex-1">{item.label}</span>
+                              <span className="flex-1">{item.label}</span>
+                            </div>
+                            {item.key && (
+                              <KbdGroup>
+                                <Kbd>{item?.key}</Kbd>
+                              </KbdGroup>
+                            )}
                           </CommandItem>
                         );
                       }}
