@@ -6,6 +6,6 @@ This portfolio is an extended version of [https://akkal.com.np](https://akkal.co
 
 ![Hero image](./public/images/og.png)
 
-[Visit Website](https://akkaldhami.vercel.app)
+[Visit Website](https://akkaldhami.com.np)
 
-Built with 🪓 by [Akkal Dhami](https://github.com/akkal-dhami)
+Built with 🪓 by [Akkal Dhami](https://github.com/akkaldhami)

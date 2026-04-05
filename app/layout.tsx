@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import siteConfig from "@/lib/site";
 import { PORTFOLIO_URL, X_USERNAME } from "@/lib/constants";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { HotkeyProvider } from "@/components/providers/hotkey-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,11 +100,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <ToastProvider position="top-center">
-            <AnchoredToastProvider>
-              <TooltipProvider>{children}</TooltipProvider>
-            </AnchoredToastProvider>
-          </ToastProvider>
+          <HotkeyProvider>
+            <ToastProvider position="top-center">
+              <AnchoredToastProvider>
+                <TooltipProvider>{children}</TooltipProvider>
+              </AnchoredToastProvider>
+            </ToastProvider>
+          </HotkeyProvider>
         </ThemeProvider>
       </body>
     </html>
