@@ -30,12 +30,27 @@ export const TEMPLATE_DATA: ITemplate[] = [
       "A sleek developer portfolio with modern UI, subtle animations, and fully responsive layouts built for performance and clarity.",
     thumbnail: "/assets/templates/temp-1.png",
     githubUrl: `${GITHUB_URL}/akkal-dhami`,
-    liveUrl: "https://akkal.com.np",
+    liveUrl: "https://akkaldhami.com.np",
     technologies: [
       { name: "Nextjs" },
       { name: "React" },
       { name: "TypeScript" },
       { name: "Tailwind" }
+    ]
+  },
+  {
+    title: "Minimalistic Portfolio",
+    description:
+      "A modern clean minimal portfolio showcasing scalable web applications, developer tools, and reusable systems, with a focus on clean UI, performance, and developer experience.",
+    thumbnail: "/images/og.png",
+    githubUrl: `${GITHUB_URL}/akkal-portfolio`,
+    liveUrl: "https://akkal.com.np",
+    technologies: [
+      { name: "Nextjs" },
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "Tailwind" },
+      { name: "Shadcn" }
     ]
   },
   {
