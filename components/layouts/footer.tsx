@@ -1,13 +1,19 @@
+"use client";
+
 import { Axe } from "lucide-react";
 import Link from "next/link";
-import { Profile } from "./profile";
+import { Profile } from "@/components/layouts/profile";
 import { Route } from "next";
 import { GITHUB_URL, NAME } from "@/lib/constants";
 import { SocialLinks } from "@/components/home/social-link";
 import { cn } from "@/lib/utils";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+import { useSound } from "@/hooks/use-sound";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const [play] = useSound(cardSlide5Sound);
 
   return (
     <>
@@ -50,13 +56,14 @@ export function Footer() {
                   "Home",
                   "Projects",
                   "Templates",
-                  "Dev-Setup",
+                  "My-Setup",
                   "Playbook",
                   "Contacts"
                 ].map(item => (
                   <li key={item}>
                     <Link
                       href={`/${item.toLowerCase()}` as Route}
+                      onClick={() => play()}
                       className="text-muted-foreground hover:text-primary text-sm transition-colors">
                       {item.replaceAll("-", " ")}
                     </Link>
@@ -85,6 +92,7 @@ export function Footer() {
               by
               <Link
                 href={GITHUB_URL}
+                onClick={() => play()}
                 target="_blank"
                 className="hover:text-primary underline underline-offset-2">
                 {NAME}

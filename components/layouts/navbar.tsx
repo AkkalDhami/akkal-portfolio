@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { Profile } from "./profile";
+import { Profile } from "@/components/layouts/profile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -14,7 +14,10 @@ import { PrimaryButton } from "@/components/ui/primary-button";
 import { GITHUB_URL, NAME } from "@/lib/constants";
 import { SiGithub } from "react-icons/si";
 import { SearchCommand } from "@/components/home/search-command";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "@/components/layouts/theme-toggle";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+import { useSound } from "@/hooks/use-sound";
+import { uChatScrollButtonSound } from "@/sounds/chat-scroll";
 
 interface MenuItem {
   label: string;
@@ -44,6 +47,9 @@ export function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [play] = useSound(cardSlide5Sound);
+  const [chatScrollPlay] = useSound(uChatScrollButtonSound);
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -55,11 +61,8 @@ export function Navbar() {
 
   return (
     <>
-      <header className="bg-background fixed top-0 right-0 left-0 z-50 flex justify-center pt-2">
-        <motion.nav
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <header className="bg-background fixed top-0 right-0 left-0 z-50 flex justify-center pt-1">
+        <nav
           className={cn(
             "relative flex items-center justify-between px-4 py-2.5 transition-all duration-500",
             "bg-background w-full max-w-4xl backdrop-blur-md",
@@ -70,7 +73,9 @@ export function Navbar() {
           <Profile />
 
           <div className="flex items-center gap-3">
-            <div className="border-border/60 hidden items-center gap-1 p-1 backdrop-blur-md md:flex">
+            <div
+              className="border-border/60 hidden items-center gap-1 p-1 backdrop-blur-md md:flex"
+              onMouseLeave={() => setHoveredIndex(null)}>
               {menuItems.map((item, index) => {
                 const isActive = isActiveLink(pathname, item.href);
                 const isMoving =
@@ -80,8 +85,8 @@ export function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
+                    onClick={() => play()}
                     onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
                     className={cn(
                       "relative cursor-pointer px-4 py-1.5 text-xs font-medium tracking-widest uppercase transition-all duration-300",
                       isMoving
@@ -91,13 +96,16 @@ export function Navbar() {
                     <span className="relative z-10">{item.label}</span>
                     {isMoving && (
                       <motion.div
+                        layout
                         layoutId="nav-active"
-                        className="bg-muted group primary-ring border-edge absolute inset-0 rounded-lg border"
+                        initial={false}
+                        className="bg-secondary group primary-ring border-edge absolute inset-0 rounded-lg border"
                         transition={{
                           type: "spring",
                           bounce: 0.25,
                           duration: 0.5
-                        }}></motion.div>
+                        }}
+                      />
                     )}
                   </Link>
                 );
@@ -110,12 +118,16 @@ export function Navbar() {
               href={`${GITHUB_URL}/akkal-portfolio` as Route}
               target="_blank"
               className="primary-ring from-background to-muted relative bg-linear-to-b px-2 py-2 transition-colors">
-              <SiGithub className="size-5" />
+              <SiGithub onClick={() => play()} className="size-5" />
             </PrimaryButton>
             <ThemeToggle className="py-1.5" />
             <PrimaryButton
               variant="outline"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => {
+                setMobileMenuOpen(!mobileMenuOpen);
+                chatScrollPlay();
+                return;
+              }}
               className="relative px-2 py-1.5 transition-colors md:hidden">
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </PrimaryButton>
@@ -128,7 +140,10 @@ export function Navbar() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    chatScrollPlay();
+                  }}
                   className="bg-background/60 fixed inset-0 z-50 backdrop-blur-sm md:hidden"
                 />
                 <motion.div
@@ -143,7 +158,10 @@ export function Navbar() {
                         Menu
                       </span>
                       <button
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          chatScrollPlay();
+                        }}
                         className="group rounded-primary bg-muted hover:bg-secondary relative cursor-pointer p-2 transition-colors">
                         <X size={16} />
                         <span className="sr-only">Close menu</span>
@@ -158,7 +176,10 @@ export function Navbar() {
                             <Link
                               key={item.label}
                               href={item.href as Route}
-                              onClick={() => setMobileMenuOpen(false)}
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                                play();
+                              }}
                               className={cn(
                                 "group rounded-primary relative flex cursor-pointer items-center gap-4 border border-transparent px-4 py-2.5 transition-all duration-200",
                                 isActive
@@ -174,7 +195,7 @@ export function Navbar() {
                       )}
                     </div>
 
-                    <div className="border-border/50 mt-auto border-t pt-8">
+                    <div className="border-border/50 mt-auto border-t pt-6">
                       <div className="flex items-center gap-3">
                         <Profile />
                         <div className="flex flex-col space-y-1.5">
@@ -192,7 +213,7 @@ export function Navbar() {
               </>
             )}
           </AnimatePresence>
-        </motion.nav>
+        </nav>
       </header>
     </>
   );
