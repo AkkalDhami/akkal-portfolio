@@ -6,7 +6,6 @@ import { RxFontFamily } from "react-icons/rx";
 export interface SetupItem {
   title: string;
   link?: string;
-  image?: string;
   current?: boolean;
 }
 
@@ -23,18 +22,20 @@ export const SETUP_DATA: SetupCategory[] = [
     items: [
       {
         title: "VS Code",
-        link: "https://code.visualstudio.com/",
-        image: "/assets/icons/vscode.png"
+        link: "https://code.visualstudio.com/"
       },
       {
         title: "Cursor",
-        link: "https://cursor.sh/",
-        image: "/assets/icons/cursor.png"
+        link: "https://cursor.sh/"
       },
       {
         title: "Antigravity",
         link: "https://antigravity.google",
-        image: "/assets/icons/antigravity.png",
+        current: true
+      },
+      {
+        title: "Trae",
+        link: "https://www.trae.ai/",
         current: true
       }
     ]
@@ -54,19 +55,20 @@ export const SETUP_DATA: SetupCategory[] = [
       },
       {
         title: "Ayu",
-        link: "https://marketplace.visualstudio.com/items?itemName=teabyii.ayu"
+        link: "https://marketplace.visualstudio.com/items?itemName=teabyii.ayu",
+        current: true
       },
       {
         title: "Vesper",
         link: "https://marketplace.visualstudio.com/items?itemName=raunofreiberg.vesper"
       },
       {
-        title: "One Dark Pro",
-        link: "https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"
-      },
-      {
         title: "Chai Theme",
         link: "https://marketplace.visualstudio.com/items?itemName=hiteshchoudharycode.chai-theme"
+      },
+      {
+        title: "One Dark Pro",
+        link: "https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"
       }
     ]
   },
@@ -91,13 +93,9 @@ export const SETUP_DATA: SetupCategory[] = [
     ]
   },
   {
-    title: "Terminal & Tools",
+    title: "Terminal, Tools & Browsers",
     icon: Terminal,
     items: [
-      {
-        title: "Windows Terminal",
-        link: "https://github.com/microsoft/terminal"
-      },
       {
         title: "Warp",
         link: "https://www.warp.dev/",
@@ -105,7 +103,17 @@ export const SETUP_DATA: SetupCategory[] = [
       },
       {
         title: "Git",
-        link: "https://git-scm.com/"
+        link: "https://git-scm.com/",
+        current: true
+      },
+      {
+        title: "Zen",
+        link: "https://zen-browser.app/",
+        current: true
+      },
+      {
+        title: "Brave",
+        link: "https://brave.com/"
       }
     ]
   },

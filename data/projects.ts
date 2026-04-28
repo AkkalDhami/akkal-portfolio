@@ -27,13 +27,13 @@ export const PROJECTS: Project[] = [
       { name: "TypeScript" },
       { name: "Tailwind" }
     ],
-    thumbnail: "/images/hero.png",
+    thumbnail: "/images/servercn.png",
     images: [
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png"
+      "/images/servercn.png",
+      "/images/servercn.png",
+      "/images/servercn.png",
+      "/images/servercn.png",
+      "/images/servercn.png"
     ],
     liveUrl: "https://servercn.vercel.app",
     githubUrl: "https://github.com/akkaldhami/servercn",
@@ -45,40 +45,6 @@ export const PROJECTS: Project[] = [
       "Database-Aware Setup",
       "Transparent & Documented",
       "Dependency-Safe Installs"
-    ]
-  },
-  {
-    slug: "evanstore",
-    title: "EvanStore Groccery",
-    description:
-      "EvanStore is a e-commerce platform for grocery shopping. It is a full-stack application built with React, Node.js, and MongoDB.",
-    technologies: [
-      { name: "React" },
-      { name: "JavaScript" },
-      { name: "Nodejs" },
-      { name: "MongoDB" },
-      { name: "Tailwind" }
-    ],
-    thumbnail: "/images/hero.png",
-    images: [
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png"
-    ],
-    liveUrl: "https://evanstore.onrender.com/",
-    githubUrl: "https://github.com/AkkalDhami/EVANSTORE-GROCCERY",
-    features: [
-      "Real-time analytics",
-      "Inventory management",
-      "Sales tracking",
-      "Customer insights",
-      "User authentication",
-      "Order management",
-      "Product management",
-      "Payment processing",
-      "Shipping integration"
     ]
   }
 ];

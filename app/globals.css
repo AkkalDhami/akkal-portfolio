@@ -71,7 +71,7 @@
 :root {
   --muted-secondary: #666;
   --color-card-hover: color-mix(in oklab, var(--accent) 50%, transparent);
-  --background: var(--color-neutral-100);
+  --background: #fffdf7;
   --foreground: #000000;
   --card: #ffffff;
   --card-foreground: #000000;
@@ -139,7 +139,7 @@
 .dark {
   --muted-secondary: #888;
   --color-card-hover: #ffffff0f;
-  --background: var(--color-black);
+  --background: #040404;
   --foreground: #ffffff;
   --card: #090909;
   --card-foreground: #ffffff;
