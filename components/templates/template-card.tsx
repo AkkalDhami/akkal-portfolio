@@ -2,8 +2,6 @@
 import { LinkIcon } from "lucide-react";
 import type { Route } from "next";
 
-import { motion } from "motion/react";
-
 import Image from "next/image";
 
 import Link from "next/link";
@@ -15,11 +13,13 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip";
 import { TECH_ICONS, TechStack } from "@/utils/icon-map";
-import { ITemplate } from "./template-section";
+import { ITemplate } from "@/components/templates/template-section";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+import { useSound } from "@/hooks/use-sound";
 
 export function TemplateCard({ template }: { template: ITemplate }) {
   return (
-    <motion.div className="group screen-line-after relative p-4 transition-all">
+    <div className="group screen-line-after relative p-4 transition-all">
       <div className="flex flex-col gap-6 md:flex-row">
         <Image
           src={template.thumbnail}
@@ -56,7 +56,7 @@ export function TemplateCard({ template }: { template: ITemplate }) {
                       <TooltipTrigger
                         render={
                           <div className="group from-background to-muted primary-ring relative rounded-md bg-linear-to-b px-2 py-2">
-                            <Icon className="text-accent-foreground size-6 cursor-pointer rounded" />
+                            <Icon className="text-accent-foreground size-6 rounded" />
                             <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
                           </div>
                         }></TooltipTrigger>
@@ -75,11 +75,12 @@ export function TemplateCard({ template }: { template: ITemplate }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export function Links({ template }: { template: ITemplate }) {
+  const [play] = useSound(cardSlide5Sound);
   const baseClassName =
     "px-3 border border-neutral-500/40 bg-transparent py-2 flex items-center justify-center";
   const linkClassName =
@@ -95,6 +96,7 @@ export function Links({ template }: { template: ITemplate }) {
                 <Link
                   href={template.liveUrl as Route}
                   target="_blank"
+                  onClick={() => play()}
                   className={linkClassName}>
                   <LinkIcon className="size-4" />
                 </Link>
@@ -115,6 +117,7 @@ export function Links({ template }: { template: ITemplate }) {
                 <Link
                   href={template.githubUrl as Route}
                   target="_blank"
+                  onClick={() => play()}
                   className={linkClassName}>
                   <SiGithub className="size-4" />
                 </Link>

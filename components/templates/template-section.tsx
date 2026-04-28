@@ -1,15 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
 import { Project } from "@/data/projects";
-import { fadeInUp } from "@/components/playbook/playbook-section";
-import { stagger } from "@/components/projects/project-section";
-import { TemplateCard } from "./template-card";
+import { TemplateCard } from "@/components/templates/template-card";
 import { GITHUB_URL } from "@/lib/constants";
 import { PrimaryButton } from "@/components/ui/primary-button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
 
@@ -137,48 +133,32 @@ export function TemplateSection({ home = false }: { home?: boolean }) {
           ? "screen-line-before"
           : "bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
       )}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="mb-4 px-4">
+      <div className="mb-4 px-4">
         <Heading>Templates</Heading>
         <SubHeading className="text-muted-foreground mx-0 max-w-2xl text-lg">
           A curated collection of beautiful portfolio templates and modern
           landing pages crafted for performance and design.
         </SubHeading>
-      </motion.div>
+      </div>
 
-      <motion.div
-        variants={stagger}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="divide-edge screen-line-before grid grid-cols-1 divide-x">
+      <div className="divide-edge screen-line-before grid grid-cols-1 divide-x">
         {(home ? TEMPLATE_DATA.slice(0, 4) : TEMPLATE_DATA).map(t => (
-          <motion.div key={t.githubUrl} variants={fadeInUp} className="group">
+          <div key={t.githubUrl} className="group">
             <TemplateCard template={t} />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {home && (
-        <motion.div
-          variants={stagger}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="my-2 flex items-center justify-center">
+        <div className="my-2 flex items-center justify-center">
           <PrimaryButton
             as="a"
-            variant="secondary"
+            variant="outline"
             href={"/templates"}
             className="py-3">
             View More
-            <CornerMarkers />
           </PrimaryButton>
-        </motion.div>
+        </div>
       )}
     </Section>
   );
