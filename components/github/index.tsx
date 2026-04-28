@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import {
   GitHubContributionFallback,
   GitHubContributionGraph
-} from "./contribution";
+} from "@/components/github/contribution";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
 

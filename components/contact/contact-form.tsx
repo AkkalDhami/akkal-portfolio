@@ -7,15 +7,14 @@ import { Send, Loader2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
 import { PrimaryButton } from "@/components/ui/primary-button";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { contactFormSchema, ContactFormValues } from "@/validators/contact";
-import z from "zod";
+import { back004Sound } from "@/sounds/back-004";
+import { useSound } from "@/hooks/use-sound";
 
 export function ContactForm() {
+  const [playError] = useSound(back004Sound);
   const [isPending, startTransition] = useTransition();
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof ContactFormValues, string[]>>
-  >({});
+
   const [formData, setFormData] = useState<ContactFormValues>({
     name: "",
     email: "",
@@ -24,17 +23,16 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors({});
 
     const result = contactFormSchema.safeParse(formData);
 
     if (!result.success) {
-      setErrors(z.flattenError(result.error).fieldErrors);
       toast.add({
         title: "Validation Error",
-        description: "Please check the form for errors.",
+        description: "Please fill in all required fields.",
         type: "error"
       });
+      playError();
       return;
     }
 
@@ -63,9 +61,6 @@ export function ContactForm() {
           });
           setFormData({ name: "", email: "", message: "" });
         } else {
-          if (data.error && typeof data.error === "object") {
-            setErrors(data.error);
-          }
           toast.add({
             title: "Error",
             description:
@@ -93,14 +88,6 @@ export function ContactForm() {
       ...prev,
       [name]: value
     }));
-    // Clear error for the field when user starts typing
-    if (errors[name as keyof ContactFormValues]) {
-      setErrors(prev => {
-        const newErrors = { ...prev };
-        delete newErrors[name as keyof ContactFormValues];
-        return newErrors;
-      });
-    }
   };
 
   return (
@@ -121,9 +108,6 @@ export function ContactForm() {
           onChange={handleChange}
           disabled={isPending}
         />
-        {errors.name && (
-          <p className="text-xs text-red-500">{errors.name[0]}</p>
-        )}
       </div>
 
       <div className="space-y-2">
@@ -139,9 +123,6 @@ export function ContactForm() {
           onChange={handleChange}
           disabled={isPending}
         />
-        {errors.email && (
-          <p className="text-xs text-red-500">{errors.email[0]}</p>
-        )}
       </div>
 
       <div className="space-y-2">
@@ -157,9 +138,6 @@ export function ContactForm() {
           onChange={handleChange}
           disabled={isPending}
         />
-        {errors.message && (
-          <p className="text-xs text-red-500">{errors.message[0]}</p>
-        )}
       </div>
 
       <PrimaryButton
@@ -173,7 +151,6 @@ export function ContactForm() {
             <Send className="h-4 w-4" />
           )}
           {isPending ? "Sending..." : "Send Message"}
-          <CornerMarkers offset={7.5} hoverOffset={6} key={"primary-button"} />
         </div>
       </PrimaryButton>
     </form>

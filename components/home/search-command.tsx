@@ -41,6 +41,10 @@ import { LuMoonStar } from "react-icons/lu";
 import { useTheme } from "next-themes";
 import { TEMPLATE_DATA } from "../templates/template-section";
 import { socialLinks } from "./social-link";
+import { useSound } from "@/hooks/use-sound";
+import { click005Sound } from "@/sounds/click-005";
+import { click002Sound } from "@/sounds/click-002";
+import { uChatScrollButtonSound } from "@/sounds/chat-scroll";
 
 export interface Item {
   value: string;
@@ -190,10 +194,16 @@ export const groupedItems: Group[] = [
 export function SearchCommand() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  const [play] = useSound(click005Sound);
+  const [themePlay] = useSound(click002Sound);
+  const [chatScrollPlay] = useSound(uChatScrollButtonSound);
+
   const { systemTheme, theme, setTheme } = useTheme();
 
   function handleItemClick(_item: Item) {
     if (_item?.link && _item.newTab) {
+      chatScrollPlay();
       return window.open(_item.value, "_blank");
     }
 
@@ -202,9 +212,12 @@ export function SearchCommand() {
       const isDark = currentTheme === "dark";
 
       setTheme(isDark ? "light" : "dark");
+      themePlay();
+      return;
     }
 
     if (_item?.link) {
+      chatScrollPlay();
       router.push(_item.value as Route);
       setOpen(false);
     }
@@ -215,12 +228,13 @@ export function SearchCommand() {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen(open => !open);
+        play();
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [play]);
 
   return (
     <CommandDialog onOpenChange={setOpen} open={open}>
@@ -228,7 +242,8 @@ export function SearchCommand() {
         render={
           <PrimaryButton
             variant="outline"
-            className="primary-ring relative px-2 py-[7px] transition-colors">
+            onClick={() => play()}
+            className="primary-ring relative px-2 py-1.75 transition-colors">
             <KbdGroup>
               <Kbd>⌘</Kbd>
               <Kbd>K</Kbd>

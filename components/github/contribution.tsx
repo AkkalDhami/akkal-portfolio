@@ -10,7 +10,6 @@ import {
   ContributionGraphLegend,
   type Activity
 } from "@/components/ui/contribution-graph";
-import { motion } from "motion/react";
 import { getGitHubContributions } from "@/data/github-contributions";
 import {
   Select,
@@ -27,7 +26,6 @@ import {
 } from "@/components/ui/tooltip";
 import { format } from "date-fns";
 import { LoaderIcon } from "lucide-react";
-import { CornerMarkers } from "../ui/corner-markers";
 
 const YEARS = [
   { label: "last", value: "last" },
@@ -43,7 +41,7 @@ interface GithubContributionsProps {
 export function GitHubContributionGraph({
   initialData
 }: GithubContributionsProps) {
-  const [year, setYear] = useState<string>("last");
+  const [year, setYear] = useState<string>("2026");
   const [data, setData] = useState<Activity[]>(initialData);
   const [loading, setLoading] = useState(false);
 
@@ -68,12 +66,7 @@ export function GitHubContributionGraph({
   }, [year, initialData]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: true }}
-      className="w-full space-y-4">
+    <div className="w-full space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-muted-foreground text-base font-medium tracking-wide uppercase">
           Github Contributions
@@ -134,9 +127,8 @@ export function GitHubContributionGraph({
             </ContributionGraphFooter>
           </ContributionGraph>
         )}
-        <CornerMarkers offset={7.5} hoverOffset={6} />
       </div>
-    </motion.div>
+    </div>
   );
 }
 

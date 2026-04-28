@@ -19,6 +19,8 @@ import {
 
 import { RiLinkedinFill, RiGithubFill, RiTwitterXFill } from "react-icons/ri";
 import { IconType } from "react-icons";
+import { uChatScrollButtonSound } from "@/sounds/chat-scroll";
+import { useSound } from "@/hooks/use-sound";
 
 export type SocialLink = {
   name: string;
@@ -61,6 +63,8 @@ export function SocialLinks({
   minimal?: boolean;
   className?: string;
 }) {
+  const [chatScrollPlay] = useSound(uChatScrollButtonSound);
+
   if (minimal) {
     return (
       <div className={cn("flex items-center gap-4", className)}>
@@ -73,6 +77,7 @@ export function SocialLinks({
                     as="a"
                     variant="outline"
                     href={link.href as Route}
+                    onClick={() => chatScrollPlay()}
                     target="_blank"
                     className="group from-background to-muted primary-ring relative bg-linear-to-b px-1.5 py-1.5">
                     <link.icon className="text-muted-primary group-hover:text-primary size-6" />
@@ -99,6 +104,7 @@ export function SocialLinks({
           <motion.a
             key={social.name}
             href={social.href}
+            onClick={() => chatScrollPlay()}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:bg-card-hover primary-ring group primary-border rounded-primary relative flex w-full items-center gap-3 border-[1.5px] p-1.5 text-center">

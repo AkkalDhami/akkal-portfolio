@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "@/components/docs/copy-button";
 import { cn } from "@/lib/utils";
 import { CODE_THEME_BG } from "@/lib/constants";
 
@@ -27,7 +27,7 @@ export function Pre({
   }, [children]);
 
   return (
-    <div className="relative max-w-[272.5px] overflow-x-auto sm:max-w-[850px]">
+    <div className="relative overflow-x-auto">
       <pre
         ref={ref}
         {...props}

@@ -8,7 +8,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon
 } from "lucide-react";
-import { CornerMarkers } from "../ui/corner-markers";
 
 type Heading = {
   id: string;
@@ -81,7 +80,7 @@ export function OnThisPage() {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="group bg-muted rounded-primary relative my-6 w-full px-4 py-2">
+    <nav className="group bg-muted/60 rounded-primary relative my-6 w-full px-4 py-2">
       <div
         onClick={() => setOpen(o => !o)}
         className="text-muted-primary hover:text-primary my-2 flex cursor-pointer items-center justify-between duration-300">
@@ -95,8 +94,6 @@ export function OnThisPage() {
           <ChevronDownIcon className="size-5" />
         )}
       </div>
-
-      <CornerMarkers offset={7.5} hoverOffset={5} />
 
       {open && (
         <ul className="list-inside list-none space-y-2 text-sm">

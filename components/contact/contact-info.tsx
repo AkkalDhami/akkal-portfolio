@@ -1,7 +1,6 @@
 "use client";
 
 import { User, Mail, Phone, MapPin } from "lucide-react";
-import { motion } from "motion/react";
 import type { Route } from "next";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa6";
@@ -13,7 +12,7 @@ import {
   NAME,
   PHONE
 } from "@/lib/constants";
-import { CopyButton } from "../docs/copy-button";
+import { CopyButton } from "@/components/docs/copy-button";
 import { cn } from "@/lib/utils";
 
 export const CONTACT_INFO = [
@@ -54,14 +53,8 @@ export function ContactInfo() {
         <h3 className="mb-4 text-xl font-normal">Contact Information</h3>
       </div>
       <div className="grid grid-cols-1 space-y-4">
-        {CONTACT_INFO.map((item, index) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group relative">
+        {CONTACT_INFO.map(item => (
+          <div key={item.label} className="group relative">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <item.icon className="primary-ring rounded-primary text-muted-primary border-edge from-background to-muted size-9 border bg-linear-to-b p-1.5" />
@@ -92,7 +85,7 @@ export function ContactInfo() {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

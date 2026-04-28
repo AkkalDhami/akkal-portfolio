@@ -1,11 +1,13 @@
-import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
+"use client";
 
-import { CodeBlock } from "./code-block";
-import { CodeWrapper } from "./code-wrapper";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TerminalIcon } from "lucide-react";
-import { CODE_THEME_BG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-const bg = CODE_THEME_BG;
+
+import { CodeWrapper } from "@/components/docs/code-wrapper";
+import { usePackageManager } from "@/hooks/use-package-manager";
+import { click003Sound } from "@/sounds/click-003";
+import { useSound } from "@/hooks/use-sound";
 
 const managers = {
   pnpm: (c: string) => `pnpm dlx ${c.replace("npx ", "")}`,
@@ -14,48 +16,72 @@ const managers = {
   bun: (c: string) => `bunx --bun ${c.replace("npx ", "")}`
 };
 
+export type PackageManager = keyof typeof managers;
+
 export default function PackageManagerTabs({
   command = ""
 }: {
   command: string;
 }) {
+  const { pkgManager, setPkgManager } = usePackageManager();
+
+  const [play] = useSound(click003Sound);
+
+  function onChangePackageManager(pkgManager: PackageManager) {
+    setPkgManager(pkgManager);
+  }
+
   return (
     <Tabs
-      defaultValue="npm"
-      style={{
-        backgroundColor: bg
-      }}
-      className={
-        "rounded-primary relative mt-4 max-w-[272.5px] pt-2 sm:max-w-full"
-      }>
-      <TabsList variant="underline" className={"pl-4"}>
-        <TerminalIcon className="mr-4 size-5 text-neutral-400" />
+      value={pkgManager}
+      className={cn(
+        "my-6 w-full rounded-md border-0 bg-neutral-100 dark:bg-[#101010]"
+      )}>
+      <TabsList variant="underline" className={cn("bg-transparent pt-3 pl-3")}>
+        <TerminalIcon className="text-muted-foreground mr-3 size-6 pt-1" />
         {Object.keys(managers).map(m => {
-          const Icon = getIconForPackageManager(m as keyof typeof managers);
+          const Icon = getIconForPackageManager(m as PackageManager);
           return (
-            <TabsTab
+            <TabsTrigger
               key={m}
               value={m}
               className={cn(
-                "dark:data-active:text-foreground flex items-center gap-2 font-medium text-neutral-400 hover:text-white data-active:text-white dark:text-neutral-400 dark:hover:text-white"
+                "text-muted-foreground hover:text-foreground flex items-center gap-3"
               )}
-              style={{ backgroundColor: bg }}>
-              {Icon}
+              onClick={() => {
+                onChangePackageManager(m as PackageManager);
+                play();
+              }}>
+              {Icon && getIconForPackageManager(m as keyof typeof managers)}
               {m}
-            </TabsTab>
+            </TabsTrigger>
           );
         })}
       </TabsList>
 
       {Object.entries(managers).map(([key, transform]) => {
         const cmd = transform(command);
-
+        const [bin, ...rest] = cmd.split(" ");
+        const remaining = rest.join(" ");
         return (
-          <TabsPanel key={key} value={key}>
+          <TabsContent key={key} value={key}>
             <CodeWrapper code={cmd}>
-              <CodeBlock code={cmd} lang="bash" />
+              {/* <CodeBlock code={cmd} /> */}
+              <pre className="overflow-x-auto overscroll-x-contain p-4">
+                <code
+                  data-slot="code-block"
+                  data-language="bash"
+                  className="font-code leading-none">
+                  <span className="text-[#eb7520] dark:text-[#ffc799]">
+                    {bin}
+                  </span>{" "}
+                  <span className="text-[#0e99d9] dark:text-[#52e1e3]">
+                    {remaining}
+                  </span>
+                </code>
+              </pre>
             </CodeWrapper>
-          </TabsPanel>
+          </TabsContent>
         );
       })}
     </Tabs>
