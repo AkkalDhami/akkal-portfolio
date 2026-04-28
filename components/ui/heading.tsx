@@ -15,9 +15,6 @@ export function Heading({
 
   return (
     <Tag
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
       className={cn(
         "mb-3 text-3xl font-bold sm:text-4xl",
         as === "h2" && "text-2xl font-medium sm:text-3xl sm:font-semibold",

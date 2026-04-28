@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUp } from "lucide-react";
 import { Button } from "./button";
+import { click003Sound } from "@/sounds/click-003";
+import { useSound } from "@/hooks/use-sound";
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
+
+  const [play] = useSound(click003Sound);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -39,7 +43,10 @@ export function BackToTop() {
           <Button
             variant="secondary"
             size="icon"
-            onClick={scrollToTop}
+            onClick={() => {
+              scrollToTop();
+              play();
+            }}
             className="border-border/50 primary-ring hover:bg-muted bg-muted rounded-primary border backdrop-blur-md transition-all"
             aria-label="Back to top">
             <ArrowUp className="size-5" />

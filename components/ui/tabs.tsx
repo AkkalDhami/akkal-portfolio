@@ -3,7 +3,6 @@
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 
 import { cn } from "@/lib/utils";
-import { CornerMarkers } from "./corner-markers";
 import { motion } from "motion/react";
 
 type TabsVariant = "default" | "underline";
@@ -35,8 +34,8 @@ function TabsList({
         "text-muted-foreground group relative z-0 flex w-fit items-center justify-center gap-x-0.5",
         "data-[orientation=vertical]:flex-col",
         variant === "default"
-          ? "bg-muted text-muted-foreground/72 p-0.5"
-          : "*:data-[slot=tabs-tab]:hover:bg-accent data-[orientation=horizontal]:py-0 data-[orientation=vertical]:px-1",
+          ? "bg-muted *:data-[slot=tabs-tab]:hover:bg-accent text-muted-foreground/72 p-0.5"
+          : "data-[orientation=horizontal]:py-0 data-[orientation=vertical]:px-1",
         className
       )}
       data-slot="tabs-list"
@@ -44,10 +43,10 @@ function TabsList({
       {children}
       <TabsPrimitive.Indicator
         className={cn(
-          "absolute bottom-0 left-0 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) transition-[width,translate] duration-200 ease-in-out",
+          "absolute bottom-0 left-0 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) rounded-lg bg-transparent shadow-none transition-[width,translate] duration-200 ease-in-out",
           variant === "underline"
-            ? "z-10 data-[orientation=horizontal]:h-0 data-[orientation=horizontal]:translate-y-px data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:-translate-x-px"
-            : "bg-background dark:bg-input -z-1 shadow-sm/5"
+            ? "border-primary/90 z-10 rounded-none border-b-2 data-[orientation=horizontal]:h-0 data-[orientation=horizontal]:translate-y-px data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:-translate-x-px"
+            : "dark:bg-input -z-1 bg-white"
         )}
         data-slot="tab-indicator"
         render={
@@ -66,13 +65,7 @@ function TabsList({
           translateX(var(--active-tab-left))
           translateY(calc(-1 * var(--active-tab-bottom)))
         `
-            }}>
-            <CornerMarkers
-              offset={7.5}
-              hoverOffset={0}
-              className="text-white group-hover:text-white"
-            />
-          </motion.div>
+            }}></motion.div>
         }></TabsPrimitive.Indicator>
     </TabsPrimitive.List>
   );
