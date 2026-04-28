@@ -1,17 +1,11 @@
-import { motion } from "motion/react";
 import { ICategory } from "@/utils/stack";
 import { SkillCardTooltip } from "./skill-card";
 import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
 
-const fadeInUp = {
-  initial: { y: 40, opacity: 0 },
-  animate: { y: 0, opacity: 1 }
-};
-
 export function SkillCategoryCard({ description, title, stacks }: ICategory) {
   return (
-    <motion.div variants={fadeInUp} className="group screen-line-after">
+    <div className="group screen-line-after">
       <div className="group relative h-full px-4 py-4 transition-all duration-300">
         <div className="p-1">
           <Heading className="text-muted-primary mb-0.5 text-lg font-medium sm:text-[22px]">
@@ -33,6 +27,6 @@ export function SkillCategoryCard({ description, title, stacks }: ICategory) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

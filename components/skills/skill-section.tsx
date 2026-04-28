@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
 import {
@@ -10,16 +9,8 @@ import {
   TOOLS_STACKS
 } from "@/utils/stack";
 import { SkillCategoryCard } from "./skill-category";
-import { Section } from "../ui/section";
+import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 const skills = [
   {
@@ -47,29 +38,19 @@ const skills = [
 export function SkillsSection({ home = false }: { home?: boolean }) {
   return (
     <Section id="skills" className={cn(home && "screen-line-before")}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="mb-4 px-4">
+      <div className="mb-4 px-4">
         <Heading>Skills & Technologies</Heading>
         <SubHeading className="mx-0 max-w-2xl">
           A collection of skills and technologies that I have acquired over the
           years.
         </SubHeading>
-      </motion.div>
+      </div>
 
-      <motion.div
-        variants={stagger}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        className="screen-line-before grid grid-cols-1">
+      <div className="screen-line-before grid grid-cols-1">
         {skills.map((skill, index) => (
           <SkillCategoryCard key={index} {...skill} />
         ))}
-      </motion.div>
+      </div>
     </Section>
   );
 }

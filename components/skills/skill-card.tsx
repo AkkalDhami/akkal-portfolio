@@ -56,7 +56,7 @@ function SkillCardTooltip({ skill }: { skill: IStack }) {
             <div className="group from-background to-muted primary-ring rounded-primary relative bg-linear-to-b px-2.5 py-2">
               {typeOfSkillIcon === "icon" ? (
                 <>
-                  <skill.icon className="text-accent-foreground size-8 cursor-pointer rounded" />
+                  <skill.icon className="text-accent-foreground size-7 rounded" />
                   <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
                 </>
               ) : (
@@ -65,7 +65,7 @@ function SkillCardTooltip({ skill }: { skill: IStack }) {
                   alt={skill.label}
                   width={20}
                   height={20}
-                  className="text-accent-foreground size-8 cursor-pointer rounded-md invert"
+                  className="text-accent-foreground size-7 cursor-pointer rounded-md invert"
                 />
               )}
             </div>
