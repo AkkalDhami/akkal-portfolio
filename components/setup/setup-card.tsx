@@ -1,44 +1,27 @@
 "use client";
 
-import { motion } from "motion/react";
-import { Circle, MoveUpRight } from "lucide-react";
+import { Circle } from "lucide-react";
 import { SetupItem } from "@/data/setup";
-import Image from "next/image";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import Link from "next/link";
 import { Route } from "next";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+import { useSound } from "@/hooks/use-sound";
 
-export function SetupCard({ item, index }: { item: SetupItem; index: number }) {
+export function SetupCard({ item }: { item: SetupItem }) {
+  const [play] = useSound(cardSlide5Sound);
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.25, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group rounded-primary border-edge primary-ring bg-card hover:border-foreground/20 relative flex flex-col justify-between border p-3">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {item.image && (
-            <Image src={item.image} alt={item.title} width={24} height={24} />
-          )}
-          <h3 className="text-muted-foreground flex items-center gap-2 text-base font-normal">
-            {item.title}
-            {item.current && (
-              <Circle className="size-3 fill-current text-green-500" />
-            )}
-          </h3>
-        </div>
-        {item.link && (
-          <Link
-            href={item.link as Route}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="">
-            <MoveUpRight className="text-muted-foreground hover:text-primary size-4" />
-          </Link>
+    <Link
+      href={item.link as Route}
+      target="_blank"
+      onClick={() => play()}
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-foreground flex items-center gap-3 underline-offset-2 hover:underline">
+      <h3 className="flex items-center gap-2 text-base font-normal">
+        {item.title}
+        {item.current && (
+          <Circle className="size-2 fill-current text-green-500" />
         )}
-      </div>
-      <CornerMarkers />
-    </motion.div>
+      </h3>
+    </Link>
   );
 }

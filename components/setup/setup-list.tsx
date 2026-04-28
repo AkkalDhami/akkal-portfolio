@@ -1,36 +1,26 @@
 "use client";
 
 import { SETUP_DATA } from "@/data/setup";
-import { SetupCard } from "./setup-card";
-import { motion } from "motion/react";
+import { SetupCard } from "@/components/setup/setup-card";
 
 export function SetupList() {
   return (
     <div className="space-y-4 pt-4">
-      {SETUP_DATA.map((category, categoryIndex) => (
+      {SETUP_DATA.map(category => (
         <section
           key={category.title}
           className="screen-line-after space-y-4 pb-4">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.05, delay: categoryIndex * 0.05 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3">
-            <div className="from-background to-muted border-edge rounded-primary primary-ring text-primary flex size-9 items-center justify-center border bg-linear-to-b">
-              <category.icon className="size-5" />
+          <div className="flex items-center gap-3">
+            <div className="from-background to-muted border-edge rounded-primary primary-ring text-primary flex size-7 items-center justify-center border bg-linear-to-b">
+              <category.icon className="size-4" />
             </div>
-            <h2 className="text-muted-primary text-2xl font-medium tracking-tight">
+            <h2 className="text-muted-primary text-xl font-medium tracking-tight">
               {category.title}
             </h2>
-          </motion.div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {category.items.map((item, itemIndex) => (
-              <SetupCard
-                key={item.title}
-                item={item}
-                index={categoryIndex + itemIndex}
-              />
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            {category.items.map(item => (
+              <SetupCard key={item.title} item={item} />
             ))}
           </div>
         </section>

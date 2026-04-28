@@ -1,24 +1,23 @@
 import { IPlaybook } from "@/types/app.types";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+import { useSound } from "@/hooks/use-sound";
 
-export function PlaybookCard({ data, i }: { data: IPlaybook; i: number }) {
+export function PlaybookCard({ data }: { data: IPlaybook }) {
+  const [play] = useSound(cardSlide5Sound);
   return (
-    <motion.a
+    <a
       href={`/docs/${data.slug}`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.1 }}
-      viewport={{ once: true }}
+      onClick={() => play()}
       className={cn(
         "group hover:bg-card-hover screen-line-before relative p-4 duration-300"
       )}>
-      <h2 className="text-muted-primary group-hover:text-foreground mb-2 text-lg font-medium underline-offset-4 group-hover:underline">
+      <h2 className="text-muted-primary group-hover:text-foreground font-noraml mb-2 text-lg underline-offset-4 group-hover:underline">
         {data.title}
       </h2>
       {data.description && (
-        <p className="text-muted-foreground line-clamp-3">{data.description}</p>
+        <p className="text-muted-secondary line-clamp-3">{data.description}</p>
       )}
-    </motion.a>
+    </a>
   );
 }
