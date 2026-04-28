@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { ProjectCard } from "@/components/projects/project-card";
 import { BackButton } from "@/components/shared/back-btn";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { PrimaryButton } from "@/components/ui/primary-button";
 import { getPreviousAndNextProject, getProjectBySlug } from "@/utils/project";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -70,11 +69,6 @@ export default async function Page(props: PageProps<"/projects/[slug]">) {
             <div className="flex items-center gap-1">
               <ChevronLeft className="size-5" /> Previous Project
             </div>
-            <CornerMarkers
-              offset={7.5}
-              hoverOffset={6}
-              className="text-primary"
-            />
           </PrimaryButton>
         )}
         {nextProject && (
@@ -87,11 +81,6 @@ export default async function Page(props: PageProps<"/projects/[slug]">) {
             <div className="flex items-center gap-1">
               Next Project <ChevronRight className="size-5" />
             </div>
-            <CornerMarkers
-              offset={7.5}
-              hoverOffset={6}
-              className="text-primary"
-            />
           </PrimaryButton>
         )}
       </div>

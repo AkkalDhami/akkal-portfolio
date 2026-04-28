@@ -13,7 +13,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 import { PLAYBOOK_DATA } from "@/data/playbook";
 import { IPlaybook } from "@/types/app.types";
-import { CornerMarkers } from "@/components/ui/corner-markers";
 import { PrimaryButton } from "@/components/ui/primary-button";
 import siteConfig from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -139,7 +138,7 @@ export default async function DocsPage(props: PageProps<"/docs/[[...slug]]">) {
             }}
           />
         </article>
-        <div className="mt-14">
+        <div className="mt-8">
           <NextSteps next={next} prev={prev} className="mt-8" />
         </div>
       </div>
@@ -162,7 +161,7 @@ const NextSteps = ({
     <div className={cn("flex items-center justify-between gap-4", className)}>
       {prev && (
         <PrimaryButton
-          variant="secondary"
+          variant="outline"
           className={cn(
             "group font-medium tracking-normal capitalize",
             min ? "px-2 py-2" : "px-4 py-2"
@@ -173,13 +172,12 @@ const NextSteps = ({
             <ArrowLeftIcon className="size-4" />
             {!min && <span className="hidden sm:inline"> {prev.title}</span>}
           </div>
-          <CornerMarkers offset={7.5} hoverOffset={4} />
         </PrimaryButton>
       )}
       {next && (
         <div className="flex items-center justify-end">
           <PrimaryButton
-            variant="secondary"
+            variant="outline"
             className={cn(
               "group font-medium tracking-normal capitalize",
               min ? "px-2 py-2" : "px-4 py-2"
@@ -191,7 +189,6 @@ const NextSteps = ({
               {!min && <span className="hidden sm:inline"> {next.title}</span>}
               <ArrowRightIcon className="size-4" />
             </div>
-            <CornerMarkers offset={7.5} hoverOffset={4} />
           </PrimaryButton>
         </div>
       )}
