@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/tooltip";
 import { TECH_ICONS, TechStack } from "@/utils/icon-map";
 import { cn } from "@/lib/utils";
+import { useSound } from "@/hooks/use-sound";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
 
 export function ProjectCard({
   project,
@@ -66,7 +68,7 @@ export function ProjectCard({
                         <TooltipTrigger
                           render={
                             <div className="group from-background to-muted primary-ring rounded-primary relative bg-linear-to-b px-2 py-2">
-                              <Icon className="text-accent-foreground size-6 cursor-pointer rounded" />
+                              <Icon className="text-accent-foreground size-6 rounded" />
                               <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/15"></div>
                             </div>
                           }></TooltipTrigger>
@@ -234,6 +236,8 @@ export function ProjectLinks({
   details?: boolean;
   project: Project;
 }) {
+  const [play] = useSound(cardSlide5Sound);
+
   if (!details) {
     const baseClassName =
       "px-3 border border-neutral-500/40 rounded-primary bg-transparent py-2 flex items-center justify-center";
@@ -249,6 +253,7 @@ export function ProjectLinks({
                 render={
                   <Link
                     href={project.liveUrl as Route}
+                    onClick={() => play()}
                     target="_blank"
                     className={cn("primary-ring", linkClassName)}>
                     <LinkIcon className="size-4" />
@@ -270,6 +275,7 @@ export function ProjectLinks({
                   <Link
                     href={project.githubUrl as Route}
                     target="_blank"
+                    onClick={() => play()}
                     className={linkClassName}>
                     <SiGithub className="size-4" />
                     <div className="corner-squircle rounded-primary supports-corner-shape:rounded-primary ring-muted pointer-events-none absolute inset-0 ring-1 ring-inset dark:ring-white/15"></div>
@@ -289,6 +295,7 @@ export function ProjectLinks({
               render={
                 <Link
                   href={`/projects/${project.slug}`}
+                  onClick={() => play()}
                   className={linkClassName}>
                   <ArrowUpRight className="size-4" />
                 </Link>
@@ -314,6 +321,7 @@ export function ProjectLinks({
         <PrimaryButton
           as="a"
           href={project.liveUrl as Route}
+          onClick={() => play()}
           target="_blank"
           className="group hover:shadow-primary relative py-2 font-medium">
           Live Demo
@@ -323,6 +331,7 @@ export function ProjectLinks({
       {project.githubUrl && (
         <PrimaryButton
           variant="outline"
+          onClick={() => play()}
           as="a"
           href={project.githubUrl as Route}
           target="_blank"

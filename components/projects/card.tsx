@@ -151,7 +151,7 @@ const DetailSwapCard = React.forwardRef<HTMLDivElement, DetailSwapCardProps>(
                   key={index}
                   onClick={() => handleImageChange(index)}
                   className={cn(
-                    "rounded-primary h-2 w-2 cursor-pointer transition-all duration-300",
+                    "rounded-primary size-3 transition-all duration-300",
                     activeIndex === index
                       ? "scale-110 bg-white ring-1 ring-white/50"
                       : "bg-white/60 hover:bg-white/80"
