@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Route } from "next";
+
+import { useSound } from "@/hooks/use-sound";
+import { cardSlide5Sound } from "@/sounds/card-slide-5";
+
 import {
   DAILY_DEV_URL,
   GITHUB_URL,
@@ -18,6 +22,7 @@ type Options = {
 };
 
 export function useNavigationHotkeys(options: Options = {}) {
+  const [play] = useSound(cardSlide5Sound);
   const router = useRouter();
 
   const {
@@ -67,13 +72,15 @@ export function useNavigationHotkeys(options: Options = {}) {
         ].includes(path)
       ) {
         window.open(path, "_blank");
+        play();
         return;
       }
 
       router.push(path as Route);
+      play();
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [router, routes, requireShift]);
+  }, [router, routes, requireShift, play]);
 }

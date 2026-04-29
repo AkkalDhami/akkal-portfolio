@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useSound } from "@/hooks/use-sound";
+import { click002Sound } from "@/sounds/click-002";
 
 type Options = {
   key?: string;
@@ -12,6 +14,7 @@ export function useThemeToggleHotkey(options: Options = {}) {
   const { key = "d", requireShift = false } = options;
 
   const { resolvedTheme, setTheme } = useTheme();
+  const [play] = useSound(click002Sound);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -30,6 +33,7 @@ export function useThemeToggleHotkey(options: Options = {}) {
 
       const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
       setTheme(nextTheme);
+      play();
     };
 
     window.addEventListener("keydown", handler);
