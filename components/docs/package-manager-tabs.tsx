@@ -66,7 +66,6 @@ export default function PackageManagerTabs({
         return (
           <TabsContent key={key} value={key}>
             <CodeWrapper code={cmd}>
-              {/* <CodeBlock code={cmd} /> */}
               <pre className="overflow-x-auto overscroll-x-contain p-4">
                 <code
                   data-slot="code-block"
