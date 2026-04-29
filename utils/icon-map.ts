@@ -40,7 +40,7 @@ export type TechStack =
   | "REDIS"
   | "EXPRESSJS"
   | "JAVASCRIPT"
-  | "SHADCNUI"
+  | "SHADCN"
   | "REACTQUERY"
   | "REDUX"
   | "GIT"
@@ -67,7 +67,7 @@ export const TECH_ICONS: Record<TechStack, IconType> = {
   REDIS: SiRedis,
   EXPRESSJS: SiExpress,
   JAVASCRIPT: SiJavascript,
-  SHADCNUI: SiShadcnui,
+  SHADCN: SiShadcnui,
   REACTQUERY: SiReactquery,
   REDUX: SiRedux,
   GIT: SiGit,

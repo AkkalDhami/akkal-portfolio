@@ -60,7 +60,7 @@ export const STACKS: IStack[] = [
   {
     label: "Shadcn UI",
     value: "shadcnui",
-    icon: TECH_ICONS.SHADCNUI,
+    icon: TECH_ICONS.SHADCN,
     category: "frontend"
   },
   {
