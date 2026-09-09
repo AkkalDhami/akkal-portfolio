@@ -58,13 +58,13 @@ export function ProjectCard({
           </Link>
 
           <div className="flex flex-1 flex-col justify-between py-1">
-            <div className="space-y-3">
+            <div className="space-y-2">
               <motion.h3
                 style={{
                   filter:
                     project.status === "ongoing" ? "blur(1px)" : "blur(0px)"
                 }}
-                className="group-hover:text-primary text-xl font-bold transition-colors md:text-2xl">
+                className="group-hover:text-primary text-xl font-medium transition-colors">
                 {project.title}
               </motion.h3>
               <motion.p

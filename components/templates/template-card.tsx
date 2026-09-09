@@ -29,8 +29,8 @@ export function TemplateCard({ template }: { template: ITemplate }) {
           className="rounded-primary h-56 w-auto object-cover grayscale-100 transition-all duration-300 group-hover:grayscale-0"
         />
         <div className="p1 flex flex-1 flex-col justify-between">
-          <div className="space-y-3">
-            <h3 className="group-hover:text-primary text-xl font-bold transition-colors md:text-2xl">
+          <div className="space-y-2">
+            <h3 className="group-hover:text-primary text-xl font-medium transition-colors">
               {template.title}
             </h3>
             <p className="text-muted-foreground line-clamp-2 md:line-clamp-3">
