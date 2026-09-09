@@ -41,19 +41,19 @@ export function HeroSection() {
             </p>
 
             <div className="text-muted-foreground w-full text-lg leading-relaxed">
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2">
                 {HOME_PAGE_STACKS.map(tech => {
                   const Icon = getIconForLanguageExtension({
                     name: tech.value,
                     className: "size-5"
                   });
                   return (
-                    <TechBadge key={tech.value} className="bg-gradient-t">
-                      <div className="text-accent-foreground relative flex items-center gap-2 text-base">
-                        {Icon}
-                        {tech.label}
-                      </div>
-                    </TechBadge>
+                    <div
+                      key={tech.value}
+                      className="text-accent-foreground relative flex items-center gap-1.5 text-base">
+                      {Icon}
+                      {tech.label}
+                    </div>
                   );
                 })}
               </div>
@@ -131,7 +131,7 @@ export function NewHeroSection() {
                   className: "size-5"
                 });
                 return (
-                  <TechBadge key={tech.value} className="bg-gradient-t">
+                  <TechBadge key={tech.value} className="bg-gradient-t px-2">
                     <div className="text-accent-foreground relative flex items-center gap-2 text-base grayscale-100 duration-300 hover:grayscale-0">
                       {Icon}
                       {tech.label}

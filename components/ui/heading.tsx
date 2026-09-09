@@ -16,8 +16,8 @@ export function Heading({
   return (
     <Tag
       className={cn(
-        "font-inter mb-3 text-3xl font-semibold sm:text-4xl",
-        as === "h2" && "text-2xl font-medium sm:text-3xl",
+        "font-inter mb-2 text-2xl font-semibold sm:text-3xl",
+        as === "h2" && "text-xl font-medium sm:text-2xl",
         className
       )}>
       {children}

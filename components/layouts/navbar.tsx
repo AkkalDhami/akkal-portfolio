@@ -68,7 +68,7 @@ export function Navbar() {
       <header className="bg-background fixed top-0 right-0 left-0 z-50 flex justify-center pt-1 backdrop-blur-lg">
         <nav
           className={cn(
-            "relative flex items-center justify-between px-4 py-2.5 transition-all duration-500",
+            "relative flex items-center justify-between px-4 py-2 transition-all duration-500",
             "w-full max-w-3xl backdrop-blur-md",
             "border-edge border-x",
             "screen-line-before screen-line-after"
