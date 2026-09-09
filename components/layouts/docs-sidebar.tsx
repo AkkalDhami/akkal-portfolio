@@ -9,7 +9,6 @@ import Link from "next/link";
 import { NETWORKING_DATA } from "@/data/networking";
 import { Route } from "next";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { SQL_DATA } from "@/data/sql";
 import { buttonVariants } from "@/components/ui/button";
 import { sliceContent } from "@/utils/slice-content";
@@ -75,13 +74,6 @@ export function DocsSidebar({ className }: { className?: string }) {
     }))
   }));
 
-  const totalModulesAndTopics = () => ({
-    modules: filteredModules.length,
-    topics: filteredModules.reduce((acc, m) => acc + m.topics.length, 0)
-  });
-
-  console.log(totalModulesAndTopics());
-
   return (
     <>
       <button
@@ -89,7 +81,7 @@ export function DocsSidebar({ className }: { className?: string }) {
           setIsOpen(!isOpen);
           playChatScrollButton();
         }}
-        className="text-muted-foreground hover:text-foreground hover:bg-muted fixed top-24 left-3 z-50 hidden size-8 cursor-pointer items-center justify-center rounded-md p-1.5 xl:flex">
+        className="text-muted-foreground hover:text-foreground hover:bg-muted fixed top-24 left-9 z-50 hidden size-8 cursor-pointer items-center justify-center rounded-md p-1.5 xl:flex">
         <IconMenu />
       </button>
       <motion.aside
@@ -110,7 +102,7 @@ export function DocsSidebar({ className }: { className?: string }) {
           ease: "easeInOut"
         }}
         className={cn(
-          "primary-ring not-typeset bg-background fixed top-22 left-1.5 z-40 h-full w-74 space-y-2 rounded-lg border p-2",
+          "primary-ring not-typeset bg-background fixed top-22 left-6.5 z-40 h-full w-74 space-y-2 rounded-lg border p-2",
           className
         )}>
         <h2 className="font-inter text-lg font-medium xl:pl-10">
@@ -129,7 +121,7 @@ export function DocsSidebar({ className }: { className?: string }) {
           }
         </h2>
 
-        <ScrollArea
+        <div
           className={cn(
             "relative h-full max-h-140 xl:max-h-128",
             isSql && "pb-10",
@@ -180,7 +172,7 @@ export function DocsSidebar({ className }: { className?: string }) {
               MySQL Playground
             </Link>
           )}
-        </ScrollArea>
+        </div>
       </motion.aside>
     </>
   );

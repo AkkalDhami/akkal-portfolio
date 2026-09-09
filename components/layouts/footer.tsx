@@ -49,7 +49,7 @@ export function Footer() {
         )}>
         <div
           className={cn(
-            "relative mx-auto w-full max-w-4xl px-4 py-2",
+            "relative mx-auto w-full max-w-3xl px-4 py-2",
             "screen-line-after",
             "border-edge border-x"
           )}>

@@ -69,7 +69,7 @@ export function Navbar() {
         <nav
           className={cn(
             "relative flex items-center justify-between px-4 py-2.5 transition-all duration-500",
-            "w-full max-w-4xl backdrop-blur-md",
+            "w-full max-w-3xl backdrop-blur-md",
             "border-edge border-x",
             "screen-line-before screen-line-after"
           )}>
