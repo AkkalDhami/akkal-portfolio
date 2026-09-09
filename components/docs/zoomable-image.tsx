@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import Image, { type ImageProps } from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { IconX } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 
 type ZoomableImageProps = Omit<ImageProps, "onClick" | "fill"> & {
   wrapperClassName?: string;
@@ -18,6 +19,7 @@ export function ZoomableImage({
 }: ZoomableImageProps) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const imageId = useId();
 
   // avoids SSR issues with createPortal (document isn't available on the server)
   // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -62,10 +64,11 @@ export function ZoomableImage({
 
           <motion.div
             key="image"
+            layoutId={imageId}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            transition={{ type: "spring", stiffness: 260, damping: 25 }}
             onClick={e => e.stopPropagation()}
             className="relative flex w-[95vw] items-center justify-center">
             <Image
@@ -83,16 +86,25 @@ export function ZoomableImage({
 
   return (
     <>
-      <button
+      <motion.button
         type="button"
         onClick={() => setOpen(true)}
-        className={`cursor-zoom-in overflow-hidden rounded-lg ${wrapperClassName ?? ""}`}>
+        layoutId={imageId}
+        whileTap={{ scale: 0.985 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        className={cn(
+          `cursor-zoom-in overflow-hidden rounded-lg`,
+          wrapperClassName
+        )}>
         <Image
           {...props}
           alt={alt}
-          className={`h-auto w-full transition-opacity duration-200 hover:opacity-90 ${className ?? ""}`}
+          className={cn(
+            `h-auto w-full transition-opacity duration-200 hover:opacity-90`,
+            className
+          )}
         />
-      </button>
+      </motion.button>
 
       {mounted && createPortal(overlay, document.body)}
     </>

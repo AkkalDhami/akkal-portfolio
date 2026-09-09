@@ -158,8 +158,8 @@
   --color-card-hover: #ffffff0f;
   --color-drizzle: #c5f74f;
   --color-motion: #fff312;
-  /* --background: #000000; */
-  --background: var(--color-neutral-950);
+  --background: #000000;
+  /* --background: var(--color-neutral-950); */
   --foreground: #ffffff;
   --card: #090909;
   --card-foreground: #ffffff;
