@@ -179,7 +179,7 @@ export const STACKS: IStack[] = [
 ];
 
 export const HOME_PAGE_STACKS = STACKS.filter(stack =>
-  ["nextjs", "typescript", "tailwind", "nodejs", "mongodb", "mysql"].includes(
+  ["nextjs", "typescript", "tailwind", "nodejs", "mongodb"].includes(
     stack.value
   )
 );

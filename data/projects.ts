@@ -25,6 +25,7 @@ export const PROJECTS: Project[] = [
     technologies: [
       { name: "Nextjs" },
       { name: "Nodejs" },
+      { name: "Nestjs" },
       { name: "MongoDB" },
       { name: "TypeScript" },
       { name: "Tailwind CSS" },
@@ -59,7 +60,6 @@ export const PROJECTS: Project[] = [
 
     technologies: [
       { name: "Nextjs" },
-      { name: "Nodejs" },
       { name: "MongoDB" },
       { name: "Redis" },
       { name: "TypeScript" },
